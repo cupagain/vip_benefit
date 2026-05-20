@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAG VIP 福利</title>
+<style>
+:root {
+  --color-primary: #00D2BE;
+  --color-primary-hover: rgba(0,210,190,0.8);
+  --color-primary-pressed: rgba(0,210,190,0.4);
+  --color-surface: #191919;
+  --color-surface-container: #232323;
+  --color-surface-variant: rgba(71,71,71,0.4);
+  --color-on-primary-1: #FFFFFF;
+  --color-on-primary-2: #C8C8C8;
+  --color-on-primary-3: #646464;
+  --color-outline: #474747;
+  --color-outline-brand: #00D2BE;
+  --color-scrim: rgba(25,25,25,0.8);
+  --color-creator: #FFD100;
+  --color-preset-gold: #FFA500;
+  --color-preset-orange: #FF7200;
+  --font-family: 'PingFang TC', -apple-system, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-headline-large: 36px;
+  --font-headline-medium: 32px;
+  --font-headline-small: 28px;
+  --font-title-large: 22px;
+  --font-title-medium: 20px;
+  --font-title-small: 18px;
+  --font-body-large: 16px;
+  --font-body-medium: 14px;
+  --font-body-small: 12px;
+  --spacing-3: 8px; --spacing-4: 12px; --spacing-5: 16px;
+  --spacing-6: 24px; --spacing-7: 32px; --spacing-8: 40px;
+  --spacing-9: 48px; --spacing-10: 64px;
+  --radius-s: 8px; --radius-m: 12px; --radius-l: 16px;
+  --radius-xl: 28px; --radius-full: 1000px;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-family);
+  background: var(--color-surface);
+  color: var(--color-on-primary-1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── DEV BANNER ─── */
+#dev-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: repeating-linear-gradient(45deg,#ff0000,#ff0000 10px,#ffcc00 10px,#ffcc00 20px);
+  color: #000; font-weight: 900; font-size: 14px;
+  padding: 10px 20px; text-align: center;
+  border-bottom: 3px solid #000;
+}
+
+/* ─── LANG SWITCHER ─── */
+#lang-switcher {
+  position: fixed; top: 12px; right: 12px; z-index: 1000;
+  display: flex; gap: 4px;
+}
+#lang-switcher button {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  color: var(--color-on-primary-2);
+  font-family: var(--font-family);
+  font-size: 11px; padding: 4px 8px;
+  border-radius: var(--radius-full); cursor: pointer;
+  transition: all 0.2s;
+}
+#lang-switcher button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #000; font-weight: var(--font-weight-semibold);
+}
+
+/* ─── HERO ─── */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: var(--spacing-9) var(--spacing-5) var(--spacing-8);
+  overflow: hidden;
+  text-align: center;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,210,190,0.12) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255,210,0,0.06) 0%, transparent 60%),
+              var(--color-surface);
+  z-index: 0;
+}
+.hero-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,210,190,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  animation: pulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes pulse {
+  0%,100% { transform: translate(-50%,-60%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%,-60%) scale(1.15); opacity: 1; }
+}
+.hero-content { position: relative; z-index: 1; max-width: 600px; }
+
+.vip-crown {
+  font-size: 48px; margin-bottom: var(--spacing-5);
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,210,190,0.2), rgba(0,210,190,0.05));
+  border: 1px solid var(--color-outline-brand);
+  color: var(--color-primary);
+  font-size: var(--font-body-small);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-5);
+}
+.hero-title {
+  font-size: clamp(32px, 8vw, 56px);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  background: linear-gradient(135deg, #fff 0%, var(--color-primary) 60%, #FFD100 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-5);
+}
+.hero-subtitle {
+  font-size: var(--font-body-large);
+  color: var(--color-on-primary-2);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-8);
+  max-width: 480px; margin-left: auto; margin-right: auto;
+}
+.hero-subtitle em {
+  color: var(--color-primary);
+  font-style: normal; font-weight: var(--font-weight-semibold);
+}
+
+/* CTA Button */
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--color-primary), #00b8a6);
+  color: #000;
+  font-family: var(--font-family);
+  font-size: var(--font-title-small);
+  font-weight: var(--font-weight-semibold);
+  padding: 16px 36px;
+  border-radius: var(--radius-full);
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,210,190,0.3);
+}
+.cta-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,210,190,0.4); }
+.cta-btn:hover::before { opacity: 1; }
+.cta-btn:active { transform: translateY(0); }
+.cta-arrow { font-size: 20px; transition: transform 0.3s; }
+.cta-btn:hover .cta-arrow { transform: translateX(4px); }
+
+.hero-note {
+  margin-top: var(--spacing-5);
+  font-size: var(--font-body-small);
+  color: var(--color-on-primary-3);
+}
+
+/* Scroll indicator */
+.scroll-hint {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--color-on-primary-3); font-size: 12px;
+  animation: fadeInUp 2s ease 1.5s both;
+  z-index: 1;
+}
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 2px solid var(--color-on-primary-3);
+  border-bottom: 2px solid var(--color-on-primary-3);
+  transform: rotate(45deg);
+  animation: scrollBounce 1.5s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%,100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+  50% { transform: rotate(45deg) translateY(4px); opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─── MY VIP STATUS ─── */
+#my-status {
+  background: linear-gradient(135deg, rgba(0,210,190,0.1), rgba(0,210,190,0.03));
+  border: 1px solid rgba(0,210,190,0.3);
+  border-radius: var(--radius-l);
+  padding: var(--spacing-5) var(--spacing-6);
+  margin: var(--spacing-5) var(--spacing-5) 0;
+  display: flex; align-items: center; gap: var(--spacing-5);
+}
+#my-status.hidden { display: none; }
+.status-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  background: var(--color-surface-container);
+  flex-shrink: 0;
+}
+.status-info { flex: 1; }
+.status-name { font-size: var(--font-body-large); font-weight: var(--font-weight-semibold); }
+.status-level {
+  font-size: var(--font-body-small); color: var(--color-primary);
+  margin-top: 2px;
+}
+.status-level-badge {
+  background: linear-gradient(135deg, var(--color-primary), #00b8a6);
+  color: #000; font-weight: var(--font-weight-semibold);
+  font-size: var(--font-body-small);
+  padding: 4px 12px; border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Status skeleton */
+#status-skeleton {
+  background: var(--color-surface-container);
+  border-radius: var(--radius-l);
+  padding: var(--spacing-5) var(--spacing-6);
+  margin: var(--spacing-5) var(--spacing-5) 0;
+  height: 72px;
+  position: relative; overflow: hidden;
+}
+#status-skeleton::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* ─── SECTION COMMON ─── */
+.section {
+  padding: var(--spacing-9) var(--spacing-5);
+  max-width: 680px; margin: 0 auto;
+}
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--color-outline);
+  color: var(--color-on-primary-2);
+  font-size: var(--font-body-small);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-5);
+}
+.section-title {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-4);
+}
+.section-desc {
+  font-size: var(--font-body-large);
+  color: var(--color-on-primary-2);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-7);
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-outline), transparent);
+  margin: 0 var(--spacing-5);
+}
+
+/* ─── SECTION 1: VIP 同樂會 ─── */
+#section-party { background: var(--color-surface); }
+.video-wrapper {
+  position: relative;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+  border: 1px solid rgba(0,210,190,0.2);
+  box-shadow: 0 0 60px rgba(0,210,190,0.1);
+}
+.video-wrapper video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.video-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,210,190,0.4);
+  color: var(--color-primary);
+  font-size: var(--font-body-small); font-weight: var(--font-weight-semibold);
+  padding: 4px 12px; border-radius: var(--radius-full);
+  display: flex; align-items: center; gap: 6px;
+}
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-primary);
+  animation: blink 1s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; } 50% { opacity: 0.2; }
+}
+
+.party-features {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-4); margin-top: var(--spacing-6);
+}
+.party-feature {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-m);
+  padding: var(--spacing-5);
+  display: flex; align-items: flex-start; gap: var(--spacing-4);
+}
+.pf-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.pf-label { font-size: var(--font-body-small); color: var(--color-on-primary-2); line-height: 1.4; }
+.pf-label strong { display: block; color: var(--color-on-primary-1); font-size: var(--font-body-medium); margin-bottom: 2px; }
+
+/* ─── SECTION 2: 禮物動畫 ─── */
+#section-gift { background: linear-gradient(180deg, var(--color-surface) 0%, rgba(25,25,35,1) 100%); }
+
+/* Tab navigation */
+.tabs-container {
+  position: relative; margin-bottom: var(--spacing-6);
+}
+.tabs-scroll {
+  display: flex; gap: var(--spacing-3);
+  overflow-x: auto; padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.tabs-scroll::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  color: var(--color-on-primary-3);
+  font-family: var(--font-family);
+  font-size: var(--font-body-small);
+  font-weight: var(--font-weight-semibold);
+  padding: 8px 16px; border-radius: var(--radius-full);
+  cursor: pointer; transition: all 0.25s;
+  position: relative;
+}
+.tab-btn:hover {
+  border-color: rgba(0,210,190,0.4);
+  color: var(--color-on-primary-2);
+}
+.tab-btn.active {
+  background: linear-gradient(135deg, rgba(0,210,190,0.2), rgba(0,210,190,0.05));
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.tab-btn.my-level {
+  border-color: var(--color-creator);
+  color: var(--color-creator);
+}
+.tab-btn.my-level.active {
+  background: linear-gradient(135deg, rgba(255,209,0,0.2), rgba(255,209,0,0.05));
+}
+.tab-btn .my-dot {
+  position: absolute; top: -3px; right: -3px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--color-creator);
+  border: 2px solid var(--color-surface);
+}
+
+/* Gift preview panel */
+.gift-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.gift-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.gift-preview-card {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated gift preview — CSS shimmer teaser */
+.gift-anim-stage {
+  height: 220px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,210,190,0.08) 0%, transparent 70%);
+}
+
+/* Tiered gift icon with orbiting particles */
+.gift-icon-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.gift-icon {
+  font-size: 72px;
+  filter: drop-shadow(0 0 20px rgba(0,210,190,0.4));
+  animation: giftPulse 2s ease-in-out infinite;
+}
+@keyframes giftPulse {
+  0%,100% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 20px rgba(0,210,190,0.4)); }
+  50% { transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 0 36px rgba(0,210,190,0.7)); }
+}
+
+/* Orbit rings */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,210,190,0.15);
+  animation: spin linear infinite;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.orbit-particle {
+  position: absolute; top: -4px; left: 50%;
+  width: 8px; height: 8px; border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* Shimmer overlay on gift stage */
+.gift-shimmer {
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
+  animation: giftShimmer 2.5s ease-in-out infinite;
+}
+@keyframes giftShimmer {
+  from { transform: translateX(-100%) skewX(-15deg); }
+  to { transform: translateX(200%) skewX(-15deg); }
+}
+
+/* Peek veil — creates the "意猶未盡" effect */
+.peek-veil {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--color-surface-container));
+  pointer-events: none; z-index: 2;
+}
+.peek-label {
+  position: absolute; bottom: 16px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-size: var(--font-body-small);
+  color: var(--color-on-primary-3);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.peek-dots span {
+  display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--color-on-primary-3);
+  animation: dotBounce 1.2s ease infinite;
+}
+.peek-dots span:nth-child(2) { animation-delay: 0.2s; }
+.peek-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dotBounce {
+  0%,100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+
+.gift-info {
+  padding: var(--spacing-5) var(--spacing-6);
+  border-top: 1px solid var(--color-outline);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.gift-tier-name {
+  font-size: var(--font-title-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-on-primary-1);
+}
+.gift-tier-sub {
+  font-size: var(--font-body-small);
+  color: var(--color-on-primary-3);
+  margin-top: 2px;
+}
+.gift-tier-badge {
+  font-size: var(--font-body-small);
+  font-weight: var(--font-weight-semibold);
+  padding: 4px 12px; border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+/* Tier-specific colors */
+.tier-bronze { background: rgba(180,100,40,0.2); color: #E8A070; border: 1px solid rgba(180,100,40,0.4); }
+.tier-silver { background: rgba(180,180,200,0.2); color: #D0D0E0; border: 1px solid rgba(180,180,200,0.4); }
+.tier-gold   { background: rgba(255,180,0,0.2); color: #FFD700; border: 1px solid rgba(255,180,0,0.4); }
+.tier-platinum { background: rgba(0,210,190,0.2); color: var(--color-primary); border: 1px solid rgba(0,210,190,0.4); }
+.tier-diamond { background: rgba(180,100,255,0.2); color: #C080FF; border: 1px solid rgba(180,100,255,0.4); }
+
+/* Gift stage bg per tier */
+.bg-bronze { background: radial-gradient(ellipse at 50% 50%, rgba(180,100,40,0.12) 0%, transparent 70%); }
+.bg-silver { background: radial-gradient(ellipse at 50% 50%, rgba(180,180,200,0.12) 0%, transparent 70%); }
+.bg-gold { background: radial-gradient(ellipse at 50% 50%, rgba(255,180,0,0.12) 0%, transparent 70%); }
+.bg-platinum { background: radial-gradient(ellipse at 50% 50%, rgba(0,210,190,0.12) 0%, transparent 70%); }
+.bg-diamond { background: radial-gradient(ellipse at 50% 50%, rgba(180,100,255,0.12) 0%, transparent 70%); }
+
+/* ─── SECTION 3: 7% 折扣 ─── */
+#section-discount { background: var(--color-surface); }
+.discount-card {
+  background: linear-gradient(135deg, var(--color-surface-container), rgba(35,35,50,1));
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-l);
+  padding: var(--spacing-7);
+  display: flex; align-items: center; gap: var(--spacing-6);
+  position: relative; overflow: hidden;
+}
+.discount-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,210,190,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.discount-number {
+  font-size: 72px; font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #FFD100 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+.discount-info {}
+.discount-label {
+  font-size: var(--font-title-medium);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-3);
+  line-height: 1.3;
+}
+.discount-detail {
+  font-size: var(--font-body-medium);
+  color: var(--color-on-primary-2);
+  line-height: 1.6;
+}
+.discount-example {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,210,190,0.1); border: 1px solid rgba(0,210,190,0.2);
+  border-radius: var(--radius-s);
+  padding: 6px 12px; margin-top: var(--spacing-4);
+  font-size: var(--font-body-small);
+}
+.discount-orig { color: var(--color-on-primary-3); text-decoration: line-through; }
+.discount-new { color: var(--color-primary); font-weight: var(--font-weight-semibold); }
+
+/* ─── SECTION 4: 直播徽章 ─── */
+#section-badge { background: var(--color-surface); }
+.badge-showcase {
+  display: flex; flex-direction: column; align-items: center;
+  gap: var(--spacing-6);
+}
+.badge-image-wrap {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.badge-glow-ring {
+  position: absolute;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,210,190,0.2) 0%, transparent 70%);
+  animation: badgePulse 3s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%,100% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+.badge-img {
+  width: 140px; height: 140px;
+  object-fit: cover; border-radius: 50%;
+  position: relative; z-index: 1;
+  border: 2px solid rgba(0,210,190,0.3);
+  box-shadow: 0 0 40px rgba(0,210,190,0.15);
+  animation: badgeFloat 4s ease-in-out infinite;
+}
+@keyframes badgeFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+.badge-card {
+  width: 100%;
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-l);
+  padding: var(--spacing-6);
+}
+.badge-live-demo {
+  display: flex; align-items: center; gap: var(--spacing-4);
+  background: #000;
+  border-radius: var(--radius-m);
+  padding: var(--spacing-4) var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+}
+.badge-live-avatar {
+  position: relative; flex-shrink: 0;
+}
+.badge-live-avatar img {
+  width: 44px; height: 44px; border-radius: 50%;
+  object-fit: cover;
+}
+.badge-live-badge-icon {
+  position: absolute; bottom: -4px; right: -8px;
+  width: 28px; height: 28px;
+  border-radius: 50%; overflow: hidden;
+  border: 2px solid #000;
+}
+.badge-live-badge-icon img { width: 100%; height: 100%; object-fit: cover; }
+.badge-live-name {
+  font-size: var(--font-body-medium); font-weight: var(--font-weight-semibold);
+}
+.badge-live-sub {
+  font-size: var(--font-body-small); color: var(--color-on-primary-3); margin-top: 2px;
+}
+.badge-features { display: flex; flex-direction: column; gap: var(--spacing-3); }
+.badge-feature {
+  display: flex; align-items: center; gap: var(--spacing-4);
+  font-size: var(--font-body-medium); color: var(--color-on-primary-2);
+}
+.bf-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-primary); flex-shrink: 0;
+}
+
+/* ─── BOTTOM CTA ─── */
+#section-cta {
+  background: var(--color-surface);
+  padding: var(--spacing-9) var(--spacing-5) var(--spacing-10);
+  text-align: center;
+}
+.cta-card {
+  background: linear-gradient(135deg, rgba(0,210,190,0.08), rgba(0,210,190,0.02));
+  border: 1px solid rgba(0,210,190,0.2);
+  border-radius: var(--radius-l);
+  padding: var(--spacing-8) var(--spacing-6);
+  max-width: 540px; margin: 0 auto;
+  position: relative; overflow: hidden;
+}
+.cta-card::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent 340deg, rgba(0,210,190,0.05) 350deg, transparent 360deg);
+  animation: rotateConic 8s linear infinite;
+}
+@keyframes rotateConic {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.cta-card-title {
+  font-size: var(--font-headline-small);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-4);
+  position: relative; z-index: 1;
+}
+.cta-card-sub {
+  font-size: var(--font-body-large);
+  color: var(--color-on-primary-2);
+  margin-bottom: var(--spacing-7);
+  line-height: 1.6;
+  position: relative; z-index: 1;
+}
+.cta-card-btn {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--color-primary), #00b8a6);
+  color: #000;
+  font-family: var(--font-family);
+  font-size: var(--font-title-small);
+  font-weight: var(--font-weight-semibold);
+  padding: 18px 48px;
+  border-radius: var(--radius-full);
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 8px 32px rgba(0,210,190,0.3);
+}
+.cta-card-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,210,190,0.45); }
+.cta-card-note {
+  margin-top: var(--spacing-5);
+  font-size: var(--font-body-small); color: var(--color-on-primary-3);
+  position: relative; z-index: 1;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 480px) {
+  .party-features { grid-template-columns: 1fr; }
+  .discount-card { flex-direction: column; text-align: center; }
+  .discount-number { font-size: 56px; }
+  .gift-anim-stage { height: 180px; }
+  .badge-img { width: 110px; height: 110px; }
+}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<div id="lang-switcher">
+  <button class="active" onclick="setLang('zh-TW')">繁中</button>
+  <button onclick="setLang('zh-CN')">简中</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('ja')">日文</button>
+</div>
+
+<!-- Status skeleton (shows while loading) -->
+<div id="status-skeleton"></div>
+
+<!-- My VIP status (hidden until loaded) -->
+<div id="my-status" class="hidden">
+  <div class="status-avatar" id="status-avatar">👑</div>
+  <div class="status-info">
+    <div class="status-name" id="status-name">—</div>
+    <div class="status-level" id="status-level-text"></div>
+  </div>
+  <div class="status-level-badge" id="status-level-badge">Lv.—</div>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="vip-crown">👑</div>
+    <div class="hero-tag" data-i18n="hero_tag">限定 · SWAG VIP</div>
+    <h1 class="hero-title" data-i18n="hero_title">升級即享<br>頂級禮遇</h1>
+    <p class="hero-subtitle" data-i18n="hero_subtitle">購買任一禮包，立即解鎖 <em data-i18n="hero_em">4 大 VIP 專屬福利</em>，與最頂尖的創作者同樂</p>
+    <a href="?campaign-id=checkout-diamondpack&campaign=" class="cta-btn" onclick="handleCTA(event)">
+      <span data-i18n="cta_main">立即升級 VIP</span>
+      <span class="cta-arrow">→</span>
+    </a>
+    <p class="hero-note" data-i18n="hero_note">購買任一鑽石禮包即可升級 · 立即生效</p>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SECTION 1: VIP 同樂會 ─── -->
+<section id="section-party">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-tag">🎉 <span data-i18n="s1_tag">專屬活動</span></div>
+      <h2 class="section-title" data-i18n="s1_title">VIP 同樂會</h2>
+      <p class="section-desc" data-i18n="s1_desc">每月限定 VIP 專屬聚會，與人氣創作者同台互動，搶先體驗平台最新功能，只有 VIP 才能入場。</p>
+    </div>
+    <div class="video-wrapper reveal reveal-delay-1">
+      <video
+        id="party-video"
+        playsinline autoplay muted loop
+        poster=""
+        preload="metadata"
+      >
+        <source src="VIP_同樂會__站內_.mp4" type="video/mp4">
+      </video>
+      <div class="video-badge">
+        <div class="live-dot"></div>
+        <span data-i18n="video_badge">VIP 專屬</span>
+      </div>
+    </div>
+    <div class="party-features reveal reveal-delay-2">
+      <div class="party-feature">
+        <div class="pf-icon">🌟</div>
+        <div class="pf-label"><strong data-i18n="pf1_title">創作者互動</strong><span data-i18n="pf1_desc">直接與人氣主播面對面</span></div>
+      </div>
+      <div class="party-feature">
+        <div class="pf-icon">🎁</div>
+        <div class="pf-label"><strong data-i18n="pf2_title">專屬禮物</strong><span data-i18n="pf2_desc">限定活動特效禮物</span></div>
+      </div>
+      <div class="party-feature">
+        <div class="pf-icon">🏆</div>
+        <div class="pf-label"><strong data-i18n="pf3_title">排行競賽</strong><span data-i18n="pf3_desc">VIP 專屬排行榜獎勵</span></div>
+      </div>
+      <div class="party-feature">
+        <div class="pf-icon">🔑</div>
+        <div class="pf-label"><strong data-i18n="pf4_title">搶先體驗</strong><span data-i18n="pf4_desc">新功能優先開放給 VIP</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SECTION 2: VIP 訂製禮物 ─── -->
+<section id="section-gift">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-tag">🎁 <span data-i18n="s2_tag">專屬禮物</span></div>
+      <h2 class="section-title" data-i18n="s2_title">VIP 訂製禮物</h2>
+      <p class="section-desc" data-i18n="s2_desc">等級越高，禮物動畫越璀璨奪目。送出你的專屬 VIP 禮物，讓直播間所有人都看到你的存在。</p>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="tabs-container reveal reveal-delay-1">
+      <div class="tabs-scroll" id="gift-tabs">
+        <button class="tab-btn active" data-tab="0" onclick="switchTab(0)">Lv.1–10</button>
+        <button class="tab-btn" data-tab="1" onclick="switchTab(1)">Lv.11–20</button>
+        <button class="tab-btn" data-tab="2" onclick="switchTab(2)">Lv.21–30</button>
+        <button class="tab-btn" data-tab="3" onclick="switchTab(3)">Lv.31–40</button>
+        <button class="tab-btn" data-tab="4" onclick="switchTab(4)">Lv.41–50</button>
+        <button class="tab-btn" data-tab="5" onclick="switchTab(5)">Lv.51–60</button>
+        <button class="tab-btn" data-tab="6" onclick="switchTab(6)">Lv.61–70</button>
+        <button class="tab-btn" data-tab="7" onclick="switchTab(7)">Lv.71–80</button>
+        <button class="tab-btn" data-tab="8" onclick="switchTab(8)">Lv.81–90</button>
+        <button class="tab-btn" data-tab="9" onclick="switchTab(9)">Lv.91–100</button>
+      </div>
+    </div>
+
+    <!-- Gift panels -->
+    <div id="gift-panels">
+
+      <div class="gift-panel active" data-panel="0">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-bronze" id="stage-0">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:110px;height:110px;animation-duration:8s"><div class="orbit-particle" style="background:#E8A070"></div></div>
+              <div class="orbit" style="width:150px;height:150px;animation-duration:12s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(232,160,112,0.5)"></div></div>
+              <div class="gift-icon">🎁</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier0_name">VIP 初心禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier0_sub">Lv.1 即可解鎖 · 銅牌風格動畫</div>
+            </div>
+            <div class="gift-tier-badge tier-bronze" data-i18n="tier0_badge">銅牌</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="1">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-silver">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:110px;height:110px;animation-duration:7s"><div class="orbit-particle" style="background:#D0D0E0"></div></div>
+              <div class="orbit" style="width:160px;height:160px;animation-duration:10s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(208,208,224,0.5)"></div></div>
+              <div class="gift-icon">💫</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier1_name">VIP 星光禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier1_sub">Lv.11 · 銀牌閃爍動畫效果</div>
+            </div>
+            <div class="gift-tier-badge tier-silver" data-i18n="tier1_badge">銀牌</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="2">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-gold">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:110px;height:110px;animation-duration:6s"><div class="orbit-particle" style="background:#FFD700"></div></div>
+              <div class="orbit" style="width:160px;height:160px;animation-duration:9s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,215,0,0.5)"></div></div>
+              <div class="orbit" style="width:200px;height:200px;animation-duration:14s"><div class="orbit-particle" style="background:rgba(255,215,0,0.3)"></div></div>
+              <div class="gift-icon">✨</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier2_name">VIP 黃金禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier2_sub">Lv.21 · 黃金爆炸動畫</div>
+            </div>
+            <div class="gift-tier-badge tier-gold" data-i18n="tier2_badge">黃金</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="3">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-gold">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:100px;height:100px;animation-duration:5s"><div class="orbit-particle" style="background:#FFA500"></div></div>
+              <div class="orbit" style="width:150px;height:150px;animation-duration:8s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,165,0,0.6)"></div></div>
+              <div class="orbit" style="width:200px;height:200px;animation-duration:11s"><div class="orbit-particle" style="background:rgba(255,165,0,0.3)"></div></div>
+              <div class="orbit" style="width:240px;height:240px;animation-duration:16s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,165,0,0.2)"></div></div>
+              <div class="gift-icon">🌟</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier3_name">VIP 榮耀禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier3_sub">Lv.31 · 多重光環特效</div>
+            </div>
+            <div class="gift-tier-badge tier-gold" data-i18n="tier3_badge">榮耀</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="4">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-platinum">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:100px;height:100px;animation-duration:4.5s"><div class="orbit-particle" style="background:#00D2BE"></div></div>
+              <div class="orbit" style="width:150px;height:150px;animation-duration:7s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(0,210,190,0.7)"></div></div>
+              <div class="orbit" style="width:195px;height:195px;animation-duration:10s"><div class="orbit-particle" style="background:rgba(0,210,190,0.4)"></div></div>
+              <div class="orbit" style="width:235px;height:235px;animation-duration:14s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(0,210,190,0.25)"></div></div>
+              <div class="gift-icon">💎</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier4_name">VIP 鉑金禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier4_sub">Lv.41 · 鉑金粒子爆發</div>
+            </div>
+            <div class="gift-tier-badge tier-platinum" data-i18n="tier4_badge">鉑金</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="5">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-platinum">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:90px;height:90px;animation-duration:4s"><div class="orbit-particle" style="background:#00D2BE"></div></div>
+              <div class="orbit" style="width:140px;height:140px;animation-duration:6.5s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(0,210,190,0.7)"></div></div>
+              <div class="orbit" style="width:185px;height:185px;animation-duration:9s"><div class="orbit-particle" style="background:rgba(0,210,190,0.5)"></div></div>
+              <div class="orbit" style="width:225px;height:225px;animation-duration:12s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(0,210,190,0.3)"></div></div>
+              <div class="orbit" style="width:260px;height:260px;animation-duration:16s"><div class="orbit-particle" style="background:rgba(0,210,190,0.15)"></div></div>
+              <div class="gift-icon">🔷</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier5_name">VIP 璀璨禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier5_sub">Lv.51 · 五重光環震撼</div>
+            </div>
+            <div class="gift-tier-badge tier-platinum" data-i18n="tier5_badge">璀璨</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="6">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-diamond">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:90px;height:90px;animation-duration:3.5s"><div class="orbit-particle" style="background:#C080FF"></div></div>
+              <div class="orbit" style="width:135px;height:135px;animation-duration:6s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(192,128,255,0.7)"></div></div>
+              <div class="orbit" style="width:175px;height:175px;animation-duration:8.5s"><div class="orbit-particle" style="background:rgba(192,128,255,0.5)"></div></div>
+              <div class="orbit" style="width:215px;height:215px;animation-duration:11s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(192,128,255,0.3)"></div></div>
+              <div class="orbit" style="width:250px;height:250px;animation-duration:14s"><div class="orbit-particle" style="background:rgba(192,128,255,0.18)"></div></div>
+              <div class="gift-icon">💜</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier6_name">VIP 紫鑽禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier6_sub">Lv.61 · 神秘紫鑽特效</div>
+            </div>
+            <div class="gift-tier-badge tier-diamond" data-i18n="tier6_badge">紫鑽</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="7">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-diamond">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:85px;height:85px;animation-duration:3s"><div class="orbit-particle" style="background:#FF80C0"></div></div>
+              <div class="orbit" style="width:130px;height:130px;animation-duration:5.5s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,128,192,0.7)"></div></div>
+              <div class="orbit" style="width:170px;height:170px;animation-duration:8s"><div class="orbit-particle" style="background:rgba(255,128,192,0.5)"></div></div>
+              <div class="orbit" style="width:210px;height:210px;animation-duration:10.5s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,128,192,0.3)"></div></div>
+              <div class="orbit" style="width:245px;height:245px;animation-duration:13.5s"><div class="orbit-particle" style="background:rgba(255,128,192,0.18)"></div></div>
+              <div class="orbit" style="width:275px;height:275px;animation-duration:17s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,128,192,0.1)"></div></div>
+              <div class="gift-icon">🌸</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier7_name">VIP 粉焰禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier7_sub">Lv.71 · 夢幻粉焰席捲</div>
+            </div>
+            <div class="gift-tier-badge tier-diamond" data-i18n="tier7_badge">粉焰</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="8">
+        <div class="gift-preview-card">
+          <div class="gift-anim-stage bg-diamond" style="background: radial-gradient(ellipse at 50% 50%, rgba(255,120,0,0.15) 0%, transparent 70%);">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:80px;height:80px;animation-duration:2.5s"><div class="orbit-particle" style="background:#FF7800"></div></div>
+              <div class="orbit" style="width:125px;height:125px;animation-duration:5s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,120,0,0.8)"></div></div>
+              <div class="orbit" style="width:165px;height:165px;animation-duration:7.5s"><div class="orbit-particle" style="background:rgba(255,120,0,0.6)"></div></div>
+              <div class="orbit" style="width:205px;height:205px;animation-duration:10s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,120,0,0.4)"></div></div>
+              <div class="orbit" style="width:240px;height:240px;animation-duration:13s"><div class="orbit-particle" style="background:rgba(255,120,0,0.25)"></div></div>
+              <div class="orbit" style="width:270px;height:270px;animation-duration:16.5s;animation-direction:reverse"><div class="orbit-particle" style="background:rgba(255,120,0,0.15)"></div></div>
+              <div class="gift-icon">🔥</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier8_name">VIP 烈焰禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier8_sub">Lv.81 · 烈焰衝天全屏特效</div>
+            </div>
+            <div class="gift-tier-badge" style="background:rgba(255,120,0,0.2);color:#FF9040;border:1px solid rgba(255,120,0,0.4);" data-i18n="tier8_badge">烈焰</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gift-panel" data-panel="9">
+        <div class="gift-preview-card" style="border-color: rgba(255,215,0,0.3);">
+          <div class="gift-anim-stage" style="background: radial-gradient(ellipse at 50% 50%, rgba(255,215,0,0.2) 0%, rgba(180,100,255,0.1) 50%, transparent 70%);">
+            <div class="gift-icon-wrap">
+              <div class="orbit" style="width:75px;height:75px;animation-duration:2s"><div class="orbit-particle" style="background:#FFD700;width:10px;height:10px"></div></div>
+              <div class="orbit" style="width:120px;height:120px;animation-duration:4.5s;animation-direction:reverse"><div class="orbit-particle" style="background:#C080FF;width:8px;height:8px"></div></div>
+              <div class="orbit" style="width:160px;height:160px;animation-duration:7s"><div class="orbit-particle" style="background:#FFD700;width:6px;height:6px"></div></div>
+              <div class="orbit" style="width:200px;height:200px;animation-duration:9.5s;animation-direction:reverse"><div class="orbit-particle" style="background:#C080FF;width:6px;height:6px"></div></div>
+              <div class="orbit" style="width:235px;height:235px;animation-duration:12.5s"><div class="orbit-particle" style="background:#FFD700;width:5px;height:5px"></div></div>
+              <div class="orbit" style="width:265px;height:265px;animation-duration:16s;animation-direction:reverse"><div class="orbit-particle" style="background:#C080FF;width:5px;height:5px"></div></div>
+              <div class="orbit" style="width:290px;height:290px;animation-duration:20s"><div class="orbit-particle" style="background:rgba(255,215,0,0.5);width:4px;height:4px"></div></div>
+              <div class="gift-icon" style="font-size:80px;animation: giftPulse 1.5s ease-in-out infinite;">🏆</div>
+            </div>
+            <div class="gift-shimmer"></div>
+            <div class="peek-veil" style="background: linear-gradient(to bottom, transparent, #232323);"></div>
+            <div class="peek-label">
+              <span data-i18n="peek_label">動畫預覽</span>
+              <span class="peek-dots"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="gift-info" style="background: linear-gradient(135deg, rgba(255,215,0,0.05), transparent);">
+            <div>
+              <div class="gift-tier-name" data-i18n="tier9_name">VIP 至尊傳說禮物</div>
+              <div class="gift-tier-sub" data-i18n="tier9_sub">Lv.91 · 全平台最頂級視覺震撼</div>
+            </div>
+            <div class="gift-tier-badge" style="background: linear-gradient(135deg,rgba(255,215,0,0.3),rgba(192,128,255,0.3));color:#FFD700;border:1px solid rgba(255,215,0,0.5);" data-i18n="tier9_badge">傳說</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /gift-panels -->
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SECTION 3: 7% 折扣 ─── -->
+<section id="section-discount">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-tag">💎 <span data-i18n="s3_tag">專屬優惠</span></div>
+      <h2 class="section-title" data-i18n="s3_title">VIP 禮包折扣</h2>
+      <p class="section-desc" data-i18n="s3_desc">成為 VIP 後，所有鑽石禮包享有 7% 折扣優惠，越買越划算，讓你的每筆消費都更有價值。</p>
+    </div>
+    <div class="discount-card reveal reveal-delay-1">
+      <div class="discount-number">7%</div>
+      <div class="discount-info">
+        <div class="discount-label" data-i18n="discount_label">鑽石禮包<br>專屬折扣</div>
+        <div class="discount-detail" data-i18n="discount_detail">成為 VIP 即享，永久有效，適用所有禮包方案</div>
+        <div class="discount-example">
+          <span class="discount-orig" data-i18n="discount_orig">NT$3,000</span>
+          <span>→</span>
+          <span class="discount-new" data-i18n="discount_new">NT$2,790</span>
+          <span style="color:var(--color-on-primary-3)" data-i18n="discount_save">省 NT$210</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SECTION 4: 直播徽章 ─── -->
+<section id="section-badge">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-tag">🏅 <span data-i18n="s4_tag">身份象徵</span></div>
+      <h2 class="section-title" data-i18n="s4_title">專屬直播徽章</h2>
+      <p class="section-desc" data-i18n="s4_desc">每位 VIP 在直播間擁有專屬徽章，彰顯你的身份地位，讓創作者第一眼就認出你。</p>
+    </div>
+    <div class="badge-showcase">
+      <div class="badge-image-wrap reveal reveal-delay-1">
+        <div class="badge-glow-ring"></div>
+        <img class="badge-img" src="data:image/jpeg;base64,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" alt="VIP Lv.1 徽章">
+      </div>
+      <div class="badge-card reveal reveal-delay-2">
+        <div class="badge-live-demo">
+          <div class="badge-live-avatar">
+            <div style="width:44px;height:44px;border-radius:50%;background:var(--color-surface-container);border:1px solid var(--color-outline);display:flex;align-items:center;justify-content:center;font-size:20px">👤</div>
+            <div class="badge-live-badge-icon">
+              <img src="data:image/jpeg;base64,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" alt="badge">
+            </div>
+          </div>
+          <div>
+            <div class="badge-live-name" data-i18n="badge_demo_name">VIP 用戶</div>
+            <div class="badge-live-sub" data-i18n="badge_demo_sub">直播間顯示效果預覽</div>
+          </div>
+        </div>
+        <div class="badge-features">
+          <div class="badge-feature"><div class="bf-dot"></div><span data-i18n="bf1">直播間名稱旁顯示專屬徽章</span></div>
+          <div class="badge-feature"><div class="bf-dot"></div><span data-i18n="bf2">等級越高，徽章越璀璨稀有</span></div>
+          <div class="badge-feature"><div class="bf-dot"></div><span data-i18n="bf3">讓創作者第一眼認出你的身份</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── BOTTOM CTA ─── -->
+<section id="section-cta">
+  <div class="cta-card reveal">
+    <h2 class="cta-card-title" data-i18n="cta_card_title">準備好成為 VIP 了嗎？</h2>
+    <p class="cta-card-sub" data-i18n="cta_card_sub">購買任一鑽石禮包，立即解鎖以上所有專屬福利</p>
+    <a href="?campaign-id=checkout-diamondpack&campaign=" class="cta-card-btn" onclick="handleCTA(event)">
+      <span data-i18n="cta_main">立即升級 VIP</span>
+      <span>→</span>
+    </a>
+    <p class="cta-card-note" data-i18n="cta_note">升級立即生效 · 福利永久保留</p>
+  </div>
+</section>
+
+<script>
+// ─── i18n ───────────────────────────────────────────────────────────────────
+const I18N = {
+  'zh-TW': {
+    hero_tag:'限定 · SWAG VIP', hero_title:'升級即享<br>頂級禮遇',
+    hero_subtitle:'購買任一禮包，立即解鎖 <em>4 大 VIP 專屬福利</em>，與最頂尖的創作者同樂',
+    hero_em:'4 大 VIP 專屬福利', hero_note:'購買任一鑽石禮包即可升級 · 立即生效',
+    cta_main:'立即升級 VIP', cta_note:'升級立即生效 · 福利永久保留',
+    video_badge:'VIP 專屬',
+    s1_tag:'專屬活動', s1_title:'VIP 同樂會',
+    s1_desc:'每月限定 VIP 專屬聚會，與人氣創作者同台互動，搶先體驗平台最新功能，只有 VIP 才能入場。',
+    pf1_title:'創作者互動', pf1_desc:'直接與人氣主播面對面',
+    pf2_title:'專屬禮物',   pf2_desc:'限定活動特效禮物',
+    pf3_title:'排行競賽',   pf3_desc:'VIP 專屬排行榜獎勵',
+    pf4_title:'搶先體驗',   pf4_desc:'新功能優先開放給 VIP',
+    s2_tag:'專屬禮物', s2_title:'VIP 訂製禮物',
+    s2_desc:'等級越高，禮物動畫越璀璨奪目。送出你的專屬 VIP 禮物，讓直播間所有人都看到你的存在。',
+    peek_label:'動畫預覽',
+    tier0_name:'VIP 初心禮物', tier0_sub:'Lv.1 即可解鎖 · 銅牌風格動畫', tier0_badge:'銅牌',
+    tier1_name:'VIP 星光禮物', tier1_sub:'Lv.11 · 銀牌閃爍動畫效果', tier1_badge:'銀牌',
+    tier2_name:'VIP 黃金禮物', tier2_sub:'Lv.21 · 黃金爆炸動畫', tier2_badge:'黃金',
+    tier3_name:'VIP 榮耀禮物', tier3_sub:'Lv.31 · 多重光環特效', tier3_badge:'榮耀',
+    tier4_name:'VIP 鉑金禮物', tier4_sub:'Lv.41 · 鉑金粒子爆發', tier4_badge:'鉑金',
+    tier5_name:'VIP 璀璨禮物', tier5_sub:'Lv.51 · 五重光環震撼', tier5_badge:'璀璨',
+    tier6_name:'VIP 紫鑽禮物', tier6_sub:'Lv.61 · 神秘紫鑽特效', tier6_badge:'紫鑽',
+    tier7_name:'VIP 粉焰禮物', tier7_sub:'Lv.71 · 夢幻粉焰席捲', tier7_badge:'粉焰',
+    tier8_name:'VIP 烈焰禮物', tier8_sub:'Lv.81 · 烈焰衝天全屏特效', tier8_badge:'烈焰',
+    tier9_name:'VIP 至尊傳說禮物', tier9_sub:'Lv.91 · 全平台最頂級視覺震撼', tier9_badge:'傳說',
+    s3_tag:'專屬優惠', s3_title:'VIP 禮包折扣',
+    s3_desc:'成為 VIP 後，所有鑽石禮包享有 7% 折扣優惠，越買越划算，讓你的每筆消費都更有價值。',
+    discount_label:'鑽石禮包<br>專屬折扣', discount_detail:'成為 VIP 即享，永久有效，適用所有禮包方案',
+    discount_orig:'NT$3,000', discount_new:'NT$2,790', discount_save:'省 NT$210',
+    s4_tag:'身份象徵', s4_title:'專屬直播徽章',
+    s4_desc:'每位 VIP 在直播間擁有專屬徽章，彰顯你的身份地位，讓創作者第一眼就認出你。',
+    badge_demo_name:'VIP 用戶', badge_demo_sub:'直播間顯示效果預覽',
+    bf1:'直播間名稱旁顯示專屬徽章', bf2:'等級越高，徽章越璀璨稀有', bf3:'讓創作者第一眼認出你的身份',
+    cta_card_title:'準備好成為 VIP 了嗎？',
+    cta_card_sub:'購買任一鑽石禮包，立即解鎖以上所有專屬福利',
+    status_lv0:'目前尚未成為 VIP', status_vip:'你目前是 VIP',
+  },
+  'zh-CN': {
+    hero_tag:'限定 · SWAG VIP', hero_title:'升级即享<br>顶级礼遇',
+    hero_subtitle:'购买任一礼包，立即解锁 <em>4 大 VIP 专属福利</em>，与最顶尖的创作者同乐',
+    hero_note:'购买任一钻石礼包即可升级 · 立即生效',
+    cta_main:'立即升级 VIP', cta_note:'升级立即生效 · 福利永久保留',
+    video_badge:'VIP 专属',
+    s1_tag:'专属活动', s1_title:'VIP 同乐会',
+    s1_desc:'每月限定 VIP 专属聚会，与人气创作者同台互动，抢先体验平台最新功能，只有 VIP 才能入场。',
+    pf1_title:'创作者互动', pf1_desc:'直接与人气主播面对面',
+    pf2_title:'专属礼物',   pf2_desc:'限定活动特效礼物',
+    pf3_title:'排行竞赛',   pf3_desc:'VIP 专属排行榜奖励',
+    pf4_title:'抢先体验',   pf4_desc:'新功能优先开放给 VIP',
+    s2_tag:'专属礼物', s2_title:'VIP 定制礼物',
+    s2_desc:'等级越高，礼物动画越璀璨夺目。送出你的专属 VIP 礼物，让直播间所有人都看到你的存在。',
+    peek_label:'动画预览',
+    tier0_name:'VIP 初心礼物', tier0_sub:'Lv.1 即可解锁 · 铜牌风格动画', tier0_badge:'铜牌',
+    tier1_name:'VIP 星光礼物', tier1_sub:'Lv.11 · 银牌闪烁动画效果', tier1_badge:'银牌',
+    tier2_name:'VIP 黄金礼物', tier2_sub:'Lv.21 · 黄金爆炸动画', tier2_badge:'黄金',
+    tier3_name:'VIP 荣耀礼物', tier3_sub:'Lv.31 · 多重光环特效', tier3_badge:'荣耀',
+    tier4_name:'VIP 铂金礼物', tier4_sub:'Lv.41 · 铂金粒子爆发', tier4_badge:'铂金',
+    tier5_name:'VIP 璀璨礼物', tier5_sub:'Lv.51 · 五重光环震撼', tier5_badge:'璀璨',
+    tier6_name:'VIP 紫钻礼物', tier6_sub:'Lv.61 · 神秘紫钻特效', tier6_badge:'紫钻',
+    tier7_name:'VIP 粉焰礼物', tier7_sub:'Lv.71 · 梦幻粉焰席卷', tier7_badge:'粉焰',
+    tier8_name:'VIP 烈焰礼物', tier8_sub:'Lv.81 · 烈焰冲天全屏特效', tier8_badge:'烈焰',
+    tier9_name:'VIP 至尊传说礼物', tier9_sub:'Lv.91 · 全平台最顶级视觉震撼', tier9_badge:'传说',
+    s3_tag:'专属优惠', s3_title:'VIP 礼包折扣',
+    s3_desc:'成为 VIP 后，所有钻石礼包享有 7% 折扣优惠，越买越划算，让你的每笔消费都更有价值。',
+    discount_label:'钻石礼包<br>专属折扣', discount_detail:'成为 VIP 即享，永久有效，适用所有礼包方案',
+    discount_orig:'NT$3,000', discount_new:'NT$2,790', discount_save:'省 NT$210',
+    s4_tag:'身份象征', s4_title:'专属直播徽章',
+    s4_desc:'每位 VIP 在直播间拥有专属徽章，彰显你的身份地位，让创作者第一眼就认出你。',
+    badge_demo_name:'VIP 用户', badge_demo_sub:'直播间显示效果预览',
+    bf1:'直播间名称旁显示专属徽章', bf2:'等级越高，徽章越璀璨稀有', bf3:'让创作者第一眼认出你的身份',
+    cta_card_title:'准备好成为 VIP 了吗？',
+    cta_card_sub:'购买任一钻石礼包，立即解锁以上所有专属福利',
+    status_lv0:'目前尚未成为 VIP', status_vip:'你目前是 VIP',
+  },
+  'en': {
+    hero_tag:'Exclusive · SWAG VIP', hero_title:'Upgrade &amp;<br>Unlock Perks',
+    hero_subtitle:'Buy any diamond pack to instantly unlock <em>4 exclusive VIP benefits</em> and connect with top creators',
+    hero_note:'Any diamond pack purchase upgrades you instantly',
+    cta_main:'Upgrade to VIP', cta_note:'Instant activation · Benefits are permanent',
+    video_badge:'VIP Only',
+    s1_tag:'Exclusive Event', s1_title:'VIP Party',
+    s1_desc:'Monthly VIP-only gatherings with top creators, exclusive games, and early access to new features — for VIP members only.',
+    pf1_title:'Creator Interaction', pf1_desc:'Face-to-face with top streamers',
+    pf2_title:'Exclusive Gifts',   pf2_desc:'Limited event special-effect gifts',
+    pf3_title:'VIP Rankings',      pf3_desc:'VIP-exclusive leaderboard rewards',
+    pf4_title:'Early Access',      pf4_desc:'New features unlocked for VIP first',
+    s2_tag:'Exclusive Gifts', s2_title:'VIP Custom Gifts',
+    s2_desc:'Higher levels unlock more dazzling animations. Send your exclusive VIP gift and make everyone in the stream notice you.',
+    peek_label:'Preview',
+    tier0_name:'VIP Starter Gift',  tier0_sub:'Unlocks at Lv.1 · Bronze animation', tier0_badge:'Bronze',
+    tier1_name:'VIP Starlight Gift',tier1_sub:'Lv.11 · Silver shimmer animation', tier1_badge:'Silver',
+    tier2_name:'VIP Gold Gift',     tier2_sub:'Lv.21 · Golden explosion effect', tier2_badge:'Gold',
+    tier3_name:'VIP Glory Gift',    tier3_sub:'Lv.31 · Multi-aura special effects', tier3_badge:'Glory',
+    tier4_name:'VIP Platinum Gift', tier4_sub:'Lv.41 · Platinum particle burst', tier4_badge:'Platinum',
+    tier5_name:'VIP Radiance Gift', tier5_sub:'Lv.51 · Five-ring aura impact', tier5_badge:'Radiance',
+    tier6_name:'VIP Purple Diamond',tier6_sub:'Lv.61 · Mystical purple diamond effects', tier6_badge:'Purple',
+    tier7_name:'VIP Pink Flame',    tier7_sub:'Lv.71 · Dreamy pink flame sweep', tier7_badge:'Pink Flame',
+    tier8_name:'VIP Inferno Gift',  tier8_sub:'Lv.81 · Full-screen inferno burst', tier8_badge:'Inferno',
+    tier9_name:'VIP Legend Gift',   tier9_sub:'Lv.91 · Platform's most stunning visual', tier9_badge:'Legend',
+    s3_tag:'Exclusive Deal', s3_title:'VIP Diamond Pack Discount',
+    s3_desc:'As a VIP, get 7% off all diamond packs — every purchase goes further, making every diamond more valuable.',
+    discount_label:'Diamond Pack<br>Exclusive Discount', discount_detail:'Active for all VIPs · Permanent · All pack sizes',
+    discount_orig:'$100', discount_new:'$93', discount_save:'Save $7',
+    s4_tag:'Identity Symbol', s4_title:'Exclusive Live Badge',
+    s4_desc:'Every VIP displays an exclusive badge in live streams, marking your status and letting creators recognize you instantly.',
+    badge_demo_name:'VIP User', badge_demo_sub:'Live stream display preview',
+    bf1:'Badge displayed next to your name in live streams', bf2:'Higher level = rarer & more stunning badge', bf3:'Creators recognize your VIP status instantly',
+    cta_card_title:'Ready to Become VIP?',
+    cta_card_sub:'Purchase any diamond pack and unlock all VIP benefits instantly',
+    status_lv0:'Not a VIP yet', status_vip:'You are currently VIP',
+  },
+  'ja': {
+    hero_tag:'限定 · SWAG VIP', hero_title:'アップグレードで<br>特典を解放',
+    hero_subtitle:'ダイヤパックを購入して <em>4つのVIP特典</em> を即時解放。トップクリエイターと繋がろう',
+    hero_note:'ダイヤパック購入で即アップグレード',
+    cta_main:'VIPにアップグレード', cta_note:'即時有効化・特典は永続',
+    video_badge:'VIP限定',
+    s1_tag:'限定イベント', s1_title:'VIPパーティー',
+    s1_desc:'毎月開催するVIP限定の集い。人気クリエイターと直接交流し、最新機能をいち早く体験できるのはVIPだけ。',
+    pf1_title:'クリエイター交流', pf1_desc:'人気配信者と直接対面',
+    pf2_title:'限定ギフト',       pf2_desc:'イベント限定エフェクトギフト',
+    pf3_title:'VIPランキング',    pf3_desc:'VIP限定ランキング報酬',
+    pf4_title:'先行体験',         pf4_desc:'新機能はVIPに優先解放',
+    s2_tag:'限定ギフト', s2_title:'VIPカスタムギフト',
+    s2_desc:'レベルが高いほど、ギフトアニメーションはより豪華に。専用ギフトを送って、配信ルームで存在感を放とう。',
+    peek_label:'プレビュー',
+    tier0_name:'VIPスターターギフト',  tier0_sub:'Lv.1解放・ブロンズアニメ', tier0_badge:'ブロンズ',
+    tier1_name:'VIPスターライトギフト',tier1_sub:'Lv.11・シルバーきらめき', tier1_badge:'シルバー',
+    tier2_name:'VIPゴールドギフト',    tier2_sub:'Lv.21・黄金爆発エフェクト', tier2_badge:'ゴールド',
+    tier3_name:'VIP栄光ギフト',        tier3_sub:'Lv.31・マルチオーラ特効', tier3_badge:'栄光',
+    tier4_name:'VIPプラチナギフト',    tier4_sub:'Lv.41・プラチナ粒子爆発', tier4_badge:'プラチナ',
+    tier5_name:'VIP輝耀ギフト',        tier5_sub:'Lv.51・五重オーラ衝撃', tier5_badge:'輝耀',
+    tier6_name:'VIPパープルダイヤ',    tier6_sub:'Lv.61・神秘的な紫ダイヤ', tier6_badge:'紫ダイヤ',
+    tier7_name:'VIPピンクフレイム',    tier7_sub:'Lv.71・夢幻ピンク炎', tier7_badge:'ピンク炎',
+    tier8_name:'VIP炎ギフト',          tier8_sub:'Lv.81・全画面炎エフェクト', tier8_badge:'炎',
+    tier9_name:'VIP至高レジェンド',    tier9_sub:'Lv.91・最高峰ビジュアル衝撃', tier9_badge:'レジェンド',
+    s3_tag:'限定割引', s3_title:'VIPダイヤパック割引',
+    s3_desc:'VIPになると全ダイヤパックが7%オフ。購入するたびにお得感が増し、ダイヤの価値が高まります。',
+    discount_label:'ダイヤパック<br>限定割引', discount_detail:'全VIPに適用・永続・全パック対象',
+    discount_orig:'¥3,000', discount_new:'¥2,790', discount_save:'¥210お得',
+    s4_tag:'アイデンティティ', s4_title:'限定ライブバッジ',
+    s4_desc:'すべてのVIPがライブ配信で専用バッジを表示。あなたのステータスを示し、クリエイターが一目であなたを認識します。',
+    badge_demo_name:'VIPユーザー', badge_demo_sub:'ライブ表示プレビュー',
+    bf1:'名前の隣にVIPバッジが表示される', bf2:'レベルが高いほどバッジが豪華・レア', bf3:'クリエイターが瞬時にVIPと認識',
+    cta_card_title:'VIPになる準備はできていますか？',
+    cta_card_sub:'ダイヤパックを購入して、すべてのVIP特典を即時解放',
+    status_lv0:'まだVIPではありません', status_vip:'あなたは現在VIPです',
+  }
+};
+
+let currentLang = 'zh-TW';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('#lang-switcher button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`#lang-switcher button[onclick="setLang('${lang}')"]`).classList.add('active');
+  applyLang(lang);
+}
+
+function applyLang(lang) {
+  const d = I18N[lang] || I18N['zh-TW'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (d[key] !== undefined) {
+      if (key === 'hero_subtitle' || key === 'discount_label') {
+        el.innerHTML = d[key];
+      } else {
+        el.textContent = d[key];
+      }
+    }
+  });
+}
+
+// ─── IFRAME HANDSHAKE ────────────────────────────────────────────────────────
+let token = null;
+let retryInterval = null;
+
+function sendReady() {
+  window.parent.postMessage({ type: 'IFRAME_READY' }, '*');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(sendReady, 100);
+  retryInterval = setInterval(() => { if (!token) sendReady(); }, 3000);
+});
+
+window.addEventListener('message', (event) => {
+  const { type, apiUrlPrefix, token: receivedToken } = event.data || {};
+  if (type === 'SET_DOMAIN_CONFIG' && apiUrlPrefix) window.apiBase = apiUrlPrefix;
+  if (type === 'SET_TOKEN' && receivedToken && receivedToken !== token) {
+    token = receivedToken;
+    clearInterval(retryInterval);
+    fetchMyLevel(token);
+  }
+});
+
+// ─── DEV MODE ────────────────────────────────────────────────────────────────
+const isDevMode = (window.self === window.top);
+if (isDevMode) {
+  const banner = document.createElement('div');
+  banner.id = 'dev-banner';
+  banner.textContent = '⚠️ 本地預覽模式 (Dev Mode) — 以下為假資料，非線上真實數據 ⚠️';
+  document.body.prepend(banner);
+  document.body.style.paddingTop = '44px';
+  setTimeout(() => showStatus({ level_info: { level: 0 }, displayName: '訪客用戶', username: 'guest' }), 1000);
+}
+
+// ─── FETCH /me ───────────────────────────────────────────────────────────────
+async function fetchMyLevel(tok) {
+  try {
+    const base = window.apiBase || '';
+    const res = await fetch(`${base}/me`, {
+      headers: { 'Authorization': `Bearer ${tok}` }
+    });
+    if (!res.ok) throw new Error('me api fail');
+    const data = await res.json();
+    showStatus(data);
+  } catch(e) {
+    document.getElementById('status-skeleton').classList.add('hidden');
+  }
+}
+
+function showStatus(data) {
+  const level = data?.level_info?.level ?? 0;
+  const name = data?.displayName || data?.username || '';
+  const d = I18N[currentLang];
+
+  document.getElementById('status-skeleton').style.display = 'none';
+  const el = document.getElementById('my-status');
+  el.classList.remove('hidden');
+  document.getElementById('status-name').textContent = name;
+  document.getElementById('status-level-badge').textContent = level > 0 ? `VIP Lv.${level}` : 'Lv.0';
+  document.getElementById('status-level-text').textContent =
+    level > 0 ? (d.status_vip || '你目前是 VIP') : (d.status_lv0 || '目前尚未成為 VIP');
+
+  if (level > 0) {
+    el.style.borderColor = 'rgba(0,210,190,0.4)';
+    document.getElementById('status-level-badge').style.background = 'linear-gradient(135deg,var(--color-primary),#00b8a6)';
+    document.getElementById('status-level-badge').style.color = '#000';
+    markMyTab(level);
+  } else {
+    el.style.borderColor = 'rgba(71,71,71,0.5)';
+    document.getElementById('status-level-badge').style.background = 'var(--color-surface-variant)';
+    document.getElementById('status-level-badge').style.color = 'var(--color-on-primary-2)';
+  }
+}
+
+function markMyTab(level) {
+  const tabIdx = Math.min(Math.floor((level - 1) / 10), 9);
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(t => t.classList.remove('my-level'));
+  if (tabs[tabIdx]) {
+    tabs[tabIdx].classList.add('my-level');
+    const dot = document.createElement('span');
+    dot.className = 'my-dot';
+    tabs[tabIdx].appendChild(dot);
+    switchTab(tabIdx);
+    tabs[tabIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+}
+
+// ─── GIFT TABS ───────────────────────────────────────────────────────────────
+function switchTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.gift-panel').forEach((p,i) => {
+    p.classList.toggle('active', i === idx);
+  });
+}
+
+// ─── CTA ─────────────────────────────────────────────────────────────────────
+function handleCTA(e) {
+  const url = e.currentTarget.href;
+  if (window.self !== window.top) {
+    e.preventDefault();
+    window.parent.postMessage({ type: 'PWA_NAVIGATE', url }, '*');
+  }
+}
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+applyLang('zh-TW');
+</script>
+</body>
+</html>
