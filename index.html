@@ -6,9 +6,9 @@
 <title>SWAG VIP</title>
 <style>
 :root{
-  --p:#00D2BE; --s:#191919; --c:#1E1E1E; --c2:#252525;
-  --o:#3A3A3A; --od:rgba(58,58,58,0.55);
-  --t1:#FFFFFF; --t2:#DEDEDE; --t3:#A8A8A8; --gold:#C8A840;
+  --p:#00D2BE;--s:#191919;--c:#1E1E1E;--c2:#252525;
+  --o:#3A3A3A;--od:rgba(58,58,58,0.55);
+  --t1:#FFFFFF;--t2:#DEDEDE;--t3:#A8A8A8;--gold:#C8A840;
   --f:'PingFang TC',-apple-system,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,120 +37,119 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 .h-hl{font-size:clamp(22px,6vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.4px;margin-bottom:6px;color:var(--t1)}
 .h-sub{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:24px;max-width:320px}
 
-/* ═══ PRICE CARD — 500 is the focal point ═══ */
+/* PRICE CARD */
 .price-card{
   background:linear-gradient(150deg,#0d1b2a 0%,#112240 60%,#0a3d62 100%);
-  border:1px solid rgba(0,210,190,.4);
-  border-radius:16px;
-  padding:22px 20px 18px;
-  margin-bottom:8px;
-  position:relative;overflow:hidden;
+  border:1px solid rgba(0,210,190,.4);border-radius:16px;
+  padding:22px 20px 20px;margin-bottom:8px;position:relative;overflow:hidden;
 }
-.price-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--p) 40%,rgba(0,210,190,.3) 100%);
-}
-.price-card::after{
-  content:'';position:absolute;bottom:-40px;right:-40px;
-  width:120px;height:120px;
-  background:radial-gradient(circle,rgba(0,210,190,.1),transparent 70%);
-  border-radius:50%;pointer-events:none;
-}
-.pc-label{
-  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(0,210,190,.7);margin-bottom:10px;
-  display:flex;align-items:center;gap:8px;
-}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--p) 40%,rgba(0,210,190,.3) 100%)}
+.price-card::after{content:'';position:absolute;bottom:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(0,210,190,.1),transparent 70%);border-radius:50%;pointer-events:none}
+.pc-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(0,210,190,.7);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .pc-label::after{content:'';flex:1;height:1px;background:rgba(0,210,190,.2)}
-
-/* 500 number */
-.pc-num-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:14px}
-.pc-num{
-  font-size:clamp(60px,17vw,84px);
-  font-weight:800;line-height:.85;letter-spacing:-4px;
-  background:linear-gradient(160deg,#fff 0%,var(--p) 45%,#00f5e0 75%,#FFD100 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.pc-unit{
-  font-size:17px;font-weight:700;color:var(--p);
-  margin-bottom:10px;margin-left:2px;
-  line-height:1.2;
-}
+.pc-num-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:16px}
+.pc-num{font-size:clamp(60px,17vw,84px);font-weight:800;line-height:.85;letter-spacing:-4px;background:linear-gradient(160deg,#fff 0%,var(--p) 45%,#00f5e0 75%,#FFD100 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc-unit{font-size:17px;font-weight:700;color:var(--p);margin-bottom:10px;margin-left:2px;line-height:1.2}
 .pc-unit-sub{font-size:10px;color:var(--t3);letter-spacing:.5px;margin-top:2px}
-
-/* Result row: → VIP Lv.1 */
-.pc-result{
-  display:flex;align-items:center;gap:10px;
-  padding-top:14px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-.pc-arrow{
-  width:30px;height:30px;flex-shrink:0;border-radius:50%;
-  background:rgba(0,210,190,.14);border:1px solid rgba(0,210,190,.28);
-  display:flex;align-items:center;justify-content:center;
-  animation:ap 2.2s ease-in-out infinite;
-}
+.pc-result{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07)}
+.pc-arrow{width:30px;height:30px;flex-shrink:0;border-radius:50%;background:rgba(0,210,190,.14);border:1px solid rgba(0,210,190,.28);display:flex;align-items:center;justify-content:center;animation:ap 2.2s ease-in-out infinite}
 @keyframes ap{0%,100%{box-shadow:0 0 0 0 rgba(0,210,190,.3)}55%{box-shadow:0 0 0 7px rgba(0,210,190,0)}}
 .pc-arrow svg{width:14px;height:14px;stroke:var(--p);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.pc-result-text{}
-.pc-result-label{font-size:12px;color:var(--t3);margin-bottom:5px}
-/* VIP Lv.1 — prominent but not gimmicky */
-.pc-vip-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,rgba(0,210,190,.22),rgba(0,210,190,.08));
-  border:1.5px solid var(--p);
-  border-radius:8px;
-  padding:5px 14px;
-}
-.pc-vip-text{
-  font-size:22px;font-weight:900;letter-spacing:-.5px;
-  background:linear-gradient(135deg,#fff 0%,var(--p) 55%,#80FFE8 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  line-height:1;
-}
-.pc-vip-sub{font-size:11px;color:var(--t2);margin-top:4px}
+.pc-result-label{font-size:12px;color:var(--t3);margin-bottom:6px}
+.pc-vip-badge{display:inline-flex;align-items:center;background:linear-gradient(135deg,rgba(0,210,190,.22),rgba(0,210,190,.08));border:1.5px solid var(--p);border-radius:8px;padding:6px 16px}
+.pc-vip-text{font-size:22px;font-weight:900;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,var(--p) 55%,#80FFE8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 
-/* connector */
-.unlock-connector{
-  display:flex;flex-direction:column;align-items:center;gap:3px;
-  padding:10px 0 8px;
-}
-.uc-seg{width:1px;height:14px;background:linear-gradient(to bottom,rgba(0,210,190,.5),rgba(0,210,190,.15))}
-.uc-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(0,210,190,.09);border:1px solid rgba(0,210,190,.22);
-  border-radius:100px;padding:5px 14px;
-  font-size:11px;font-weight:700;color:var(--p);letter-spacing:.3px;
-}
-.uc-badge svg{width:11px;height:11px;stroke:var(--p);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.uc-seg2{width:1px;height:14px;background:linear-gradient(to bottom,rgba(0,210,190,.15),var(--od))}
+/* CONNECTOR */
+.unlock-connector{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 0 10px}
+.uc-seg{width:1px;height:16px;background:linear-gradient(to bottom,rgba(0,210,190,.5),rgba(0,210,190,.15))}
+.uc-seg2{width:1px;height:16px;background:linear-gradient(to bottom,rgba(0,210,190,.15),var(--od))}
+.uc-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,210,190,.12);border:1px solid rgba(0,210,190,.3);border-radius:100px;padding:8px 20px;font-size:14px;font-weight:800;color:var(--t1);letter-spacing:.2px}
+.uc-badge svg{width:13px;height:13px;stroke:var(--p);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* ═══ BENEFIT ROWS ═══ */
+/* ═══════════════════════════════════════
+   BENEFITS GRID — party big top, 3 below
+═══════════════════════════════════════ */
 .benefits-wrap{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
-.benefit-row{
-  display:flex;align-items:center;gap:14px;padding:14px;
-  background:var(--c);border:1px solid var(--od);border-radius:13px;
-  cursor:pointer;transition:border-color .2s,background .2s;
+
+/* Shared animated border shimmer */
+@keyframes borderFlow{
+  0%  { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100%{ background-position: 0% 50% }
+}
+
+/* Shared card base */
+.bcard{
+  border-radius:14px;cursor:pointer;
   position:relative;overflow:hidden;
+  transition:transform .2s,filter .2s;
+  /* Conic gradient border trick via padding + bg-clip */
 }
-.benefit-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--p);transform:scaleY(0);transition:transform .25s;transform-origin:center;border-radius:0 2px 2px 0}
-.benefit-row:hover{border-color:rgba(0,210,190,.45);background:#222}
-.benefit-row:hover::before{transform:scaleY(1)}
-.benefit-row:active{transform:scale(.985)}
-.benefit-icon-box{
-  width:46px;height:46px;border-radius:11px;flex-shrink:0;
-  background:rgba(0,210,190,.1);border:1px solid rgba(0,210,190,.2);
-  display:flex;align-items:center;justify-content:center;transition:background .2s;
+.bcard:active{transform:scale(.975)}
+.bcard:hover{filter:brightness(1.08)}
+
+/* Animated border using pseudo */
+.bcard::before{
+  content:'';
+  position:absolute;inset:-1.5px;
+  border-radius:15.5px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    rgba(0,210,190,0) 0deg,
+    rgba(0,210,190,.8) 60deg,
+    rgba(0,210,190,0) 120deg,
+    rgba(255,255,255,.1) 180deg,
+    rgba(0,210,190,0) 240deg,
+    rgba(0,210,190,.5) 300deg,
+    rgba(0,210,190,0) 360deg
+  );
+  animation: rotateBorder 3s linear infinite;
+  z-index:0;
 }
-.benefit-row:hover .benefit-icon-box{background:rgba(0,210,190,.18)}
-.benefit-icon-svg{width:28px;height:28px;color:var(--p);display:flex;align-items:center;justify-content:center}
-.benefit-icon-svg svg{width:28px;height:28px}
-.benefit-body{flex:1;min-width:0}
-.benefit-title{font-size:15px;font-weight:800;color:var(--t1);margin-bottom:3px;letter-spacing:-.1px}
-.benefit-desc{font-size:12px;color:var(--t2);line-height:1.5}
-.benefit-chevron{width:20px;height:20px;color:var(--t3);flex-shrink:0;transition:transform .2s,color .2s}
-.benefit-chevron svg{width:16px;height:16px;stroke:currentColor}
-.benefit-row:hover .benefit-chevron{transform:translateX(3px);color:var(--p)}
+@property --angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes rotateBorder{to{--angle:360deg}}
+
+.bcard-inner{
+  position:relative;z-index:1;
+  background:var(--c);
+  border-radius:13px;
+  height:100%;
+  display:flex;flex-direction:column;
+}
+
+/* ── Party card (big, top) ── */
+.bcard-party{height:auto}
+.bcard-party .bcard-inner{padding:16px;flex-direction:row;align-items:center;gap:14px}
+.bcard-party .bc-icon-box{
+  width:52px;height:52px;flex-shrink:0;border-radius:12px;
+  background:rgba(0,210,190,.12);border:1px solid rgba(0,210,190,.2);
+  display:flex;align-items:center;justify-content:center;
+}
+.bcard-party .bc-icon-box svg{width:30px;height:30px;stroke:var(--p);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bcard-party .bc-body{flex:1}
+.bcard-party .bc-title{font-size:18px;font-weight:800;color:var(--t1);margin-bottom:3px;letter-spacing:-.2px}
+.bcard-party .bc-sub{font-size:12px;color:var(--t2);line-height:1.45}
+.bcard-party .bc-chevron{color:rgba(0,210,190,.6);flex-shrink:0}
+.bcard-party .bc-chevron svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── 3 small cards row ── */
+.benefits-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bcard-small{height:auto}
+.bcard-small .bcard-inner{padding:14px 12px;align-items:center;text-align:center;gap:10px}
+.bcard-small .bc-icon-box{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(0,210,190,.1);border:1px solid rgba(0,210,190,.18);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto;
+}
+.bcard-small .bc-icon-box svg{width:24px;height:24px;stroke:var(--p);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.bcard-small .bc-title{font-size:12px;font-weight:800;color:var(--t1);line-height:1.3;letter-spacing:-.1px}
+
+/* Stagger the border animation start */
+.bcard:nth-child(1)::before{animation-delay:0s}
+.benefits-row3 .bcard:nth-child(1)::before{animation-delay:.75s}
+.benefits-row3 .bcard:nth-child(2)::before{animation-delay:1.5s}
+.benefits-row3 .bcard:nth-child(3)::before{animation-delay:2.25s}
 
 /* CTA */
 .cta-wrap{padding:18px 0 28px}
@@ -168,46 +167,81 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 .sec-hd{margin-bottom:16px}
 .sec-eyebrow{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--p);margin-bottom:6px;display:flex;align-items:center;gap:8px;opacity:.75}
 .sec-eyebrow::after{content:'';flex:1;height:1px;background:var(--od)}
-.sec-title{font-size:18px;font-weight:700;color:var(--t1);letter-spacing:-.2px}
-.sec-sub{font-size:12px;color:var(--t2);margin-top:3px}
+.sec-title{font-size:22px;font-weight:800;color:var(--t1);letter-spacing:-.3px;line-height:1.2}
+.sec-sub{font-size:13px;color:var(--t2);margin-top:4px}
+
 /* VIDEO */
-.vbox{border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9;border:1px solid rgba(0,210,190,.2);position:relative}
-.vbox video{width:100%;height:100%;object-fit:cover}
-.vbadge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border:1px solid rgba(0,210,190,.35);color:var(--p);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:flex;align-items:center;gap:4px}
+.vbox{border-radius:12px;overflow:hidden;background:#111;aspect-ratio:16/9;border:1px solid rgba(0,210,190,.2);position:relative}
+.vbox video{width:100%;height:100%;object-fit:cover;display:block}
+.vbadge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border:1px solid rgba(0,210,190,.35);color:var(--p);font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;display:flex;align-items:center;gap:4px;z-index:1}
 .vdot{width:5px;height:5px;border-radius:50%;background:var(--p);animation:bl 1s infinite}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.15}}
 .party-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .pf{background:var(--c);border:1px solid var(--od);border-radius:10px;padding:12px;display:flex;align-items:flex-start;gap:10px}
 .pf-icon-wrap{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .pf-sv{width:20px;height:20px;stroke:var(--p);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.pf-t{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.pf-t{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:2px}
 .pf-d{font-size:11px;color:var(--t2);line-height:1.4}
-/* CAROUSEL */
+
+/* GIFT CAROUSEL */
 .gift-carousel-wrap{position:relative;margin:0 -16px}
-.gift-carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 16px 12px;cursor:grab}
+.gift-carousel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 16px 14px;cursor:grab}
 .gift-carousel::-webkit-scrollbar{display:none}
 .gift-carousel.dragging{cursor:grabbing;scroll-snap-type:none}
-.gi-item{flex-shrink:0;width:110px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:7px}
-.gi-img-wrap{width:110px;height:110px;border-radius:12px;background:var(--c);border:1px solid var(--od);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:border-color .2s}
-.gi-item:hover .gi-img-wrap{border-color:rgba(0,210,190,.4)}
-.gi-img{width:100%;height:100%;object-fit:contain;transition:transform .3s}
-.gi-item:hover .gi-img{transform:scale(1.06)}
-.gi-lv-pill{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);color:var(--t2);font-size:9px;font-weight:700;padding:2px 6px;border-radius:100px;letter-spacing:.5px}
+.gi-item{flex-shrink:0;width:116px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:8px}
+.gi-img-wrap{width:116px;height:116px;border-radius:14px;background:var(--c);border:1px solid var(--od);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.gi-item:hover .gi-img-wrap{border-color:rgba(0,210,190,.5);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.gi-img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
+.gi-shine{position:absolute;inset:0;z-index:2;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.08) 50%,transparent 65%);animation:giShine 3s ease-in-out infinite}
+.gi-item:nth-child(2) .gi-shine{animation-delay:.3s}.gi-item:nth-child(3) .gi-shine{animation-delay:.6s}.gi-item:nth-child(4) .gi-shine{animation-delay:.9s}.gi-item:nth-child(5) .gi-shine{animation-delay:1.2s}.gi-item:nth-child(6) .gi-shine{animation-delay:1.5s}.gi-item:nth-child(7) .gi-shine{animation-delay:1.8s}.gi-item:nth-child(8) .gi-shine{animation-delay:2.1s}.gi-item:nth-child(9) .gi-shine{animation-delay:2.4s}.gi-item:nth-child(10) .gi-shine{animation-delay:2.7s}.gi-item:nth-child(11) .gi-shine{animation-delay:3s}
+@keyframes giShine{0%{transform:translateX(-100%) skewX(-8deg)}40%,100%{transform:translateX(200%) skewX(-8deg)}}
+.gi-item:nth-child(odd) .gi-img{animation:giFloat 3s ease-in-out infinite}
+.gi-item:nth-child(even) .gi-img{animation:giFloat 3s ease-in-out infinite;animation-delay:1.5s}
+@keyframes giFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.04)}}
+.gi-lv-pill{position:absolute;top:6px;left:6px;z-index:3;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.15);color:var(--t2);font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:.5px}
 .gi-last .gi-img-wrap{border-color:rgba(200,168,64,.45);background:linear-gradient(135deg,rgba(200,168,64,.07),var(--c))}
-.gi-last .gi-lv-pill{background:rgba(200,168,64,.28);border-color:rgba(200,168,64,.45);color:var(--gold)}
-.gi-name{font-size:11px;font-weight:600;color:var(--t2);text-align:center;line-height:1.3;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gift-carousel-wrap::after{content:'';position:absolute;top:0;right:0;bottom:12px;width:36px;background:linear-gradient(to left,var(--s),transparent);pointer-events:none}
+.gi-last .gi-lv-pill{background:rgba(200,168,64,.3);border-color:rgba(200,168,64,.5);color:var(--gold)}
+.gi-name{font-size:11px;font-weight:600;color:var(--t2);text-align:center;line-height:1.3;width:116px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gift-carousel-wrap::before{content:'';position:absolute;top:0;left:0;bottom:14px;width:16px;background:linear-gradient(to right,var(--s),transparent);pointer-events:none;z-index:4}
+.gift-carousel-wrap::after{content:'';position:absolute;top:0;right:0;bottom:14px;width:40px;background:linear-gradient(to left,var(--s),transparent);pointer-events:none;z-index:4}
 .gift-dots{display:flex;gap:4px;justify-content:center;margin-top:2px;padding:0 16px}
 .gift-dot{width:4px;height:4px;border-radius:50%;background:var(--od);transition:all .3s;cursor:pointer}
-.gift-dot.on{width:16px;border-radius:2px;background:var(--p)}
-/* DISCOUNT */
-.disc-card{background:var(--c);border:1px solid var(--od);border-radius:14px;padding:20px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden}
-.disc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,210,190,.4),transparent)}
-.disc-num{font-size:60px;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--p),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;flex-shrink:0;letter-spacing:-2px}
-.disc-lbl{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px;line-height:1.3}
-.disc-det{font-size:11px;color:var(--t2);line-height:1.5}
-.disc-pill{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 10px;background:rgba(0,210,190,.08);border:1px solid rgba(0,210,190,.2);border-radius:6px;font-size:11px}
-.dco{color:var(--t3);text-decoration:line-through}.dcn{color:var(--p);font-weight:700}.dcs{color:var(--t2)}
+.gift-dot.on{width:18px;border-radius:2px;background:var(--p)}
+
+/* DISCOUNT — simplified, focus on 7% + 13499 diamonds */
+.disc-card{
+  background:linear-gradient(150deg,#0d1b2a 0%,#112240 60%,#0a3d62 100%);
+  border:1px solid rgba(0,210,190,.35);border-radius:16px;
+  padding:24px 20px;position:relative;overflow:hidden;
+}
+.disc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--p) 40%,rgba(0,210,190,.3) 100%)}
+.disc-main{display:flex;align-items:center;gap:20px;margin-bottom:16px}
+.disc-pct{
+  font-size:72px;font-weight:900;line-height:1;letter-spacing:-4px;
+  background:linear-gradient(135deg,var(--p) 0%,#00f5e0 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  flex-shrink:0;
+}
+.disc-pct-label{font-size:14px;font-weight:700;color:var(--t3);letter-spacing:1px;text-transform:uppercase;margin-top:-4px}
+.disc-right{}
+.disc-title{font-size:16px;font-weight:800;color:var(--t1);margin-bottom:6px;line-height:1.3}
+.disc-body{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* Diamond pack highlight box */
+.disc-pack{
+  background:rgba(0,0,0,.3);border:1px solid rgba(0,210,190,.25);
+  border-radius:12px;padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.disc-pack-left{}
+.disc-pack-diamonds{font-size:24px;font-weight:900;color:var(--t1);letter-spacing:-.5px;margin-bottom:2px}
+.disc-pack-diamonds span{font-size:13px;font-weight:600;color:var(--p);margin-left:4px}
+.disc-pack-name{font-size:11px;color:var(--t3)}
+.disc-pack-right{text-align:right;flex-shrink:0}
+.disc-pack-orig{font-size:12px;color:var(--t3);text-decoration:line-through;margin-bottom:4px}
+.disc-pack-price{font-size:22px;font-weight:900;color:var(--p);letter-spacing:-.5px;line-height:1}
+.disc-pack-twd{font-size:11px;color:var(--t3);margin-top:2px}
+
 /* BADGE */
 .badge-row{display:flex;align-items:center;gap:16px}
 .badge-img-wrap{position:relative;flex-shrink:0}
@@ -224,6 +258,7 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 .b-feats{display:flex;flex-direction:column;gap:6px}
 .b-feat{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--t2)}
 .b-dot{width:4px;height:4px;border-radius:50%;background:var(--p);margin-top:5px;flex-shrink:0}
+
 /* BOTTOM CTA */
 #bcta{padding:24px 16px 44px}
 .bcta-card{background:linear-gradient(150deg,#0d1b2a,#112240);border:1px solid rgba(0,210,190,.28);border-radius:16px;padding:28px 20px;text-align:center;position:relative;overflow:hidden}
@@ -247,39 +282,57 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
   <div class="pc-label" data-i18n="pl">升級門檻</div>
   <div class="pc-num-row">
     <div class="pc-num">500</div>
-    <div class="pc-unit">
-      <div data-i18n="pu">鑽石</div>
-      <div class="pc-unit-sub">DIAMONDS</div>
-    </div>
+    <div class="pc-unit"><div data-i18n="pu">鑽石</div><div class="pc-unit-sub">DIAMONDS</div></div>
   </div>
   <div class="pc-result">
-    <div class="pc-arrow">
-      <svg viewBox="0 0 14 14"><path d="M7 2v10M3 8l4 4 4-4"/></svg>
-    </div>
-    <div class="pc-result-text">
+    <div class="pc-arrow"><svg viewBox="0 0 14 14"><path d="M7 2v10M3 8l4 4 4-4"/></svg></div>
+    <div>
       <div class="pc-result-label" data-i18n="rl">購買任一禮包，立即成為</div>
-      <div class="pc-vip-badge">
-        <div class="pc-vip-text">VIP Lv.1</div>
-      </div>
-      <div class="pc-vip-sub" data-i18n="rs">升級立即生效 · 身份永久保留</div>
+      <div class="pc-vip-badge"><div class="pc-vip-text">VIP Lv.1</div></div>
     </div>
   </div>
 </div>
 
 <div class="unlock-connector">
   <div class="uc-seg"></div>
-  <div class="uc-badge">
-    <svg viewBox="0 0 12 12"><path d="M6 1v10M2 7l4 4 4-4"/></svg>
-    <span data-i18n="aw">即可享有以下四項禮遇</span>
-  </div>
+  <div class="uc-badge"><svg viewBox="0 0 12 12"><path d="M6 1v10M2 7l4 4 4-4"/></svg><span data-i18n="aw">即可享有以下四項禮遇</span></div>
   <div class="uc-seg2"></div>
 </div>
 
 <div class="benefits-wrap">
-<div class="benefit-row" onclick="goTo('sec-party')"><div class="benefit-icon-box"><div class="benefit-icon-svg"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M8 28c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="25" cy="9" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M25 14c2.2-1 3.7-3.2 3.7-5.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7" cy="9" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M7 14C4.8 13 3.3 10.8 3.3 8.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></div><div class="benefit-body"><div class="benefit-title" data-i18n="b1t">—</div><div class="benefit-desc" data-i18n="b1d">—</div></div><div class="benefit-chevron"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-<div class="benefit-row" onclick="goTo('sec-gift')"><div class="benefit-icon-box"><div class="benefit-icon-svg"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="14" width="24" height="15" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="10" width="26" height="5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="10" x2="16" y2="29" stroke="currentColor" stroke-width="1.6"/><path d="M16 10s-3.5-1.5-4.5-4.5C11 4 12 2.5 13.5 3 15 3.5 16 10 16 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M16 10s3.5-1.5 4.5-4.5C21 4 20 2.5 18.5 3 17 3.5 16 10 16 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></div><div class="benefit-body"><div class="benefit-title" data-i18n="b2t">—</div><div class="benefit-desc" data-i18n="b2d">—</div></div><div class="benefit-chevron"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-<div class="benefit-row" onclick="goTo('sec-discount')"><div class="benefit-icon-box"><div class="benefit-icon-svg"><svg viewBox="0 0 32 32" fill="none"><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="21" cy="21" r="3.5" stroke="currentColor" stroke-width="1.6"/><line x1="8" y1="26" x2="24" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div><div class="benefit-body"><div class="benefit-title" data-i18n="b3t">—</div><div class="benefit-desc" data-i18n="b3d">—</div></div><div class="benefit-chevron"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-<div class="benefit-row" onclick="goTo('sec-badge')"><div class="benefit-icon-box"><div class="benefit-icon-svg"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L16 18.7l-5.7 2.9 1.1-6.4L6.8 10.7l6.4-.9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 21.5L9.5 30l6.5-3.5 6.5 3.5L21 21.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="benefit-body"><div class="benefit-title" data-i18n="b4t">—</div><div class="benefit-desc" data-i18n="b4d">—</div></div><div class="benefit-chevron"><svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  <!-- Party — big card top -->
+  <div class="bcard bcard-party" onclick="goTo('sec-party')">
+    <div class="bcard-inner">
+      <div class="bc-icon-box"><svg viewBox="0 0 32 32" fill="none" style="width:30px;height:30px;stroke:#00D2BE;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><circle cx="16" cy="10" r="4"/><path d="M8 28c0-4.4 3.6-8 8-8s8 3.6 8 8"/><circle cx="25" cy="9" r="2.5" stroke-width="1.4"/><path d="M25 14c2.2-1 3.7-3.2 3.7-5.7" stroke-width="1.4"/><circle cx="7" cy="9" r="2.5" stroke-width="1.4"/><path d="M7 14C4.8 13 3.3 10.8 3.3 8.3" stroke-width="1.4"/></svg></div>
+      <div class="bc-body">
+        <div class="bc-title" data-i18n="b1t">VIP 同樂會</div>
+        <div class="bc-sub" data-i18n="b1d">每月限定聚會，與人氣創作者同台互動</div>
+      </div>
+      <div class="bc-chevron"><svg viewBox="0 0 16 16"><path d="M6 4l4 4-4 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+
+  <!-- 3 small cards -->
+  <div class="benefits-row3">
+    <div class="bcard bcard-small" onclick="goTo('sec-gift')">
+      <div class="bcard-inner">
+        <div class="bc-icon-box"><svg viewBox="0 0 32 32" fill="none"><rect x="4" y="14" width="24" height="15" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="10" width="26" height="5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><line x1="16" y1="10" x2="16" y2="29" stroke="currentColor" stroke-width="1.6"/><path d="M16 10s-3.5-1.5-4.5-4.5C11 4 12 2.5 13.5 3 15 3.5 16 10 16 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M16 10s3.5-1.5 4.5-4.5C21 4 20 2.5 18.5 3 17 3.5 16 10 16 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <div class="bc-title" data-i18n="b2t">VIP 訂製禮物</div>
+      </div>
+    </div>
+    <div class="bcard bcard-small" onclick="goTo('sec-discount')">
+      <div class="bcard-inner">
+        <div class="bc-icon-box"><svg viewBox="0 0 32 32" fill="none"><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="21" cy="21" r="3.5" stroke="currentColor" stroke-width="1.6"/><line x1="8" y1="26" x2="24" y2="8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="bc-title" data-i18n="b3t">禮包 7% 折扣</div>
+      </div>
+    </div>
+    <div class="bcard bcard-small" onclick="goTo('sec-badge')">
+      <div class="bcard-inner">
+        <div class="bc-icon-box"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4l2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L16 18.7l-5.7 2.9 1.1-6.4L6.8 10.7l6.4-.9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M11 21.5L9.5 30l6.5-3.5 6.5 3.5L21 21.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="bc-title" data-i18n="b4t">專屬直播徽章</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="cta-wrap">
@@ -291,8 +344,17 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 </section>
 <div class="divider"></div>
 <section class="sec" id="sec-party">
-<div class="sec-hd"><div class="sec-eyebrow" data-i18n="s1e">01 · VIP 同樂會</div><div class="sec-title" data-i18n="s1t">與創作者同台的限定體驗</div><div class="sec-sub" data-i18n="s1s">每月限定，僅 VIP 可入場</div></div>
-<div class="vbox"><video playsinline autoplay muted loop preload="metadata"><source src="VIP_同樂會__站內_.mp4" type="video/mp4"></video><div class="vbadge"><div class="vdot"></div><span data-i18n="vo">VIP 專屬</span></div></div>
+<div class="sec-hd">
+  <div class="sec-eyebrow" data-i18n="s1e">01 · VIP 同樂會</div>
+  <div class="sec-title" data-i18n="s1t">與創作者同台的限定體驗</div>
+  <div class="sec-sub" data-i18n="s1s">每月限定，僅 VIP 可入場</div>
+</div>
+<div class="vbox">
+  <video id="party-video" playsinline autoplay muted loop preload="auto" style="width:100%;height:100%;object-fit:cover;display:block">
+    <source src="VIP_同樂會__站內_.mp4" type="video/mp4">
+  </video>
+  <div class="vbadge"><div class="vdot"></div><span data-i18n="vo">VIP 專屬</span></div>
+</div>
 <div class="party-grid">
   <div class="pf"><div class="pf-icon-wrap"><svg class="pf-sv" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><div><div class="pf-t" data-i18n="pf1t">創作者互動</div><div class="pf-d" data-i18n="pf1d">直接與人氣主播面對面</div></div></div>
   <div class="pf"><div class="pf-icon-wrap"><svg class="pf-sv" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div class="pf-t" data-i18n="pf2t">搶先體驗</div><div class="pf-d" data-i18n="pf2d">新功能優先開放 VIP</div></div></div>
@@ -304,17 +366,17 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 <section class="sec" id="sec-gift">
 <div class="sec-hd"><div class="sec-eyebrow" data-i18n="s2e">02 · 訂製禮物</div><div class="sec-title" data-i18n="s2t">等級越高，動畫越璀璨</div><div class="sec-sub" data-i18n="s2s">Lv.1 起即可解鎖，隨等級持續升華</div></div>
 <div class="gift-carousel-wrap"><div class="gift-carousel" id="gcarousel">
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv1.png" alt="開場我來" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.1</div></div><div class="gi-name" data-zt="開場我來" data-zc="开场我来" data-en="Warming Up" data-ja="君のために">開場我來</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv10.png" alt="寵愛魔力" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.10</div></div><div class="gi-name" data-zt="寵愛魔力" data-zc="宠爱魔力" data-en="Magic Love" data-ja="溺愛の魔法">寵愛魔力</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv20.png" alt="頂級私藏禮" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.20</div></div><div class="gi-name" data-zt="頂級私藏禮" data-zc="顶级私藏礼" data-en="Best Gift" data-ja="至高の私蔵">頂級私藏禮</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv30.png" alt="浪漫我包了" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.30</div></div><div class="gi-name" data-zt="浪漫我包了" data-zc="浪漫我包了" data-en="All My Love" data-ja="ロマンを独占">浪漫我包了</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv40-v2.png" alt="鈔能力射擊" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.40</div></div><div class="gi-name" data-zt="鈔能力射擊" data-zc="钞能力射击" data-en="Cash Blasters" data-ja="札束乱舞">鈔能力射擊</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv50-v2.png" alt="愛妳送全套" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.50</div></div><div class="gi-name" data-zt="愛妳送全套" data-zc="爱妳送全套" data-en="The Whole Package" data-ja="愛のフルセット">愛妳送全套</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv60-v2.png" alt="女神後援会" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.60</div></div><div class="gi-name" data-zt="女神後援会" data-zc="女神后援会" data-en="Goddess Squad" data-ja="女神の親衛隊">女神後援会</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv70-v2.png" alt="速度與激情" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.70</div></div><div class="gi-name" data-zt="速度與激情" data-zc="速度与激情" data-en="Fast & Furious" data-ja="ワイルド・スピード">速度與激情</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv80-v2.png" alt="讓妳心動之旅" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.80</div></div><div class="gi-name" data-zt="讓妳心動之旅" data-zc="让妳心动之旅" data-en="Heart-Throb Voyage" data-ja="ときめきクルーズ">讓妳心動之旅</div></div>
-<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv90.png" alt="全場我買單" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.90</div></div><div class="gi-name" data-zt="全場我買單" data-zc="全场我买单" data-en="I Pay All" data-ja="全て私が払う">全場我買單</div></div>
-<div class="gi-item gi-last"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv-100.png" alt="這輩子我養妳" loading="lazy" onerror="this.style.opacity='0.2'"><div class="gi-lv-pill">Lv.100</div></div><div class="gi-name" data-zt="這輩子我養妳" data-zc="这辈子我养妳" data-en="You are mine forever" data-ja="一生守り抜く">這輩子我養妳</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv1.png" alt="開場我來" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.1</div></div><div class="gi-name" data-zt="開場我來" data-zc="开场我来" data-en="Warming Up" data-ja="君のために">開場我來</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv10.png" alt="寵愛魔力" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.10</div></div><div class="gi-name" data-zt="寵愛魔力" data-zc="宠爱魔力" data-en="Magic Love" data-ja="溺愛の魔法">寵愛魔力</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv20.png" alt="頂級私藏禮" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.20</div></div><div class="gi-name" data-zt="頂級私藏禮" data-zc="顶级私藏礼" data-en="Best Gift" data-ja="至高の私蔵">頂級私藏禮</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv30.png" alt="浪漫我包了" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.30</div></div><div class="gi-name" data-zt="浪漫我包了" data-zc="浪漫我包了" data-en="All My Love" data-ja="ロマンを独占">浪漫我包了</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv40-v2.png" alt="鈔能力射擊" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.40</div></div><div class="gi-name" data-zt="鈔能力射擊" data-zc="钞能力射击" data-en="Cash Blasters" data-ja="札束乱舞">鈔能力射擊</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv50-v2.png" alt="愛妳送全套" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.50</div></div><div class="gi-name" data-zt="愛妳送全套" data-zc="爱妳送全套" data-en="The Whole Package" data-ja="愛のフルセット">愛妳送全套</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv60-v2.png" alt="女神後援会" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.60</div></div><div class="gi-name" data-zt="女神後援会" data-zc="女神后援会" data-en="Goddess Squad" data-ja="女神の親衛隊">女神後援会</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv70-v2.png" alt="速度與激情" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.70</div></div><div class="gi-name" data-zt="速度與激情" data-zc="速度与激情" data-en="Fast & Furious" data-ja="ワイルド・スピード">速度與激情</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv80-v2.png" alt="讓妳心動之旅" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.80</div></div><div class="gi-name" data-zt="讓妳心動之旅" data-zc="让妳心动之旅" data-en="Heart-Throb Voyage" data-ja="ときめきクルーズ">讓妳心動之旅</div></div>
+<div class="gi-item"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv90.png" alt="全場我買單" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.90</div></div><div class="gi-name" data-zt="全場我買單" data-zc="全场我买单" data-en="I Pay All" data-ja="全て私が払う">全場我買單</div></div>
+<div class="gi-item gi-last"><div class="gi-img-wrap"><img class="gi-img" src="https://public.swag.live/products/livestream-lv-100.png" alt="這輩子我養妳" loading="lazy" onerror="this.style.opacity='0.15'"><div class="gi-shine"></div><div class="gi-lv-pill">Lv.100</div></div><div class="gi-name" data-zt="這輩子我養妳" data-zc="这辈子我养妳" data-en="You are mine forever" data-ja="一生守り抜く">這輩子我養妳</div></div>
 </div>
 <div class="gift-dots" id="gdots"><div class="gift-dot on" data-idx="0"></div><div class="gift-dot" data-idx="1"></div><div class="gift-dot" data-idx="2"></div><div class="gift-dot" data-idx="3"></div><div class="gift-dot" data-idx="4"></div><div class="gift-dot" data-idx="5"></div><div class="gift-dot" data-idx="6"></div><div class="gift-dot" data-idx="7"></div><div class="gift-dot" data-idx="8"></div><div class="gift-dot" data-idx="9"></div><div class="gift-dot" data-idx="10"></div></div></div>
 </section>
@@ -322,9 +384,27 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 <section class="sec" id="sec-discount">
 <div class="sec-hd"><div class="sec-eyebrow" data-i18n="s3e">03 · 禮包折扣</div><div class="sec-title" data-i18n="s3t">每次購買，永遠更划算</div></div>
 <div class="disc-card">
-  <div class="disc-num">7%</div>
-  <div><div class="disc-lbl" data-i18n="dclbl">鑽石禮包專屬折扣</div><div class="disc-det" data-i18n="dcdet">升級後永久有效，適用所有禮包方案</div>
-  <div class="disc-pill"><span class="dco" data-i18n="dco">NT$3,000</span><span style="color:var(--t3)">→</span><span class="dcn" data-i18n="dcn">NT$2,790</span><span class="dcs" data-i18n="dcs">省 NT$210</span></div></div>
+  <div class="disc-main">
+    <div>
+      <div class="disc-pct">7%</div>
+      <div class="disc-pct-label" data-i18n="disc_off">OFF</div>
+    </div>
+    <div class="disc-right">
+      <div class="disc-title" data-i18n="disc_title">鑽石禮包 VIP 專屬折扣</div>
+      <div class="disc-body" data-i18n="disc_body">成為 VIP Lv.1 後永久享有，適用所有鑽石禮包方案</div>
+    </div>
+  </div>
+  <div class="disc-pack">
+    <div class="disc-pack-left">
+      <div class="disc-pack-diamonds">13,499 <span data-i18n="disc_diamond">鑽石</span></div>
+      <div class="disc-pack-name" data-i18n="disc_pack_name">限定 VIP 禮包</div>
+    </div>
+    <div class="disc-pack-right">
+      <div class="disc-pack-orig">NT$967</div>
+      <div class="disc-pack-price">NT$899</div>
+      <div class="disc-pack-twd" data-i18n="disc_save">省 NT$68</div>
+    </div>
+  </div>
 </div>
 </section>
 <div class="divider"></div>
@@ -346,80 +426,68 @@ body{font-family:var(--f);background:var(--s);color:var(--t1);overflow-x:hidden;
 <script>
 const T={
 'zh-TW':{tag:'SWAG VIP · 限定',hl:'只需一個禮包<br>解鎖四項頂級禮遇',sub:'送出第一個禮包的瞬間，你的身份就此不同',
-  pl:'升級門檻',pu:'鑽石',rl:'購買任一禮包，立即成為',rs:'升級立即生效 · 身份永久保留',
-  aw:'即可享有以下四項禮遇',
+  pl:'升級門檻',pu:'鑽石',rl:'購買任一禮包，立即成為',aw:'即可享有以下四項禮遇',
   b1t:'VIP 同樂會',b1d:'每月限定聚會，與人氣創作者同台互動',
-  b2t:'VIP 訂製禮物動畫',b2d:'等級越高，動畫越璀璨，讓全場都看見你',
-  b3t:'禮包 7% 專屬折扣',b3d:'每次購買鑽石禮包，永久享有折扣優惠',
-  b4t:'專屬直播徽章',b4d:'直播間彰顯 VIP 身份，讓創作者認識你',
+  b2t:'VIP 訂製禮物',b3t:'禮包 7% 折扣',b4t:'專屬直播徽章',
   cta:'立即升級 VIP',ctan:'購買任一鑽石禮包即可升級 · 立即生效',
   s1e:'01 · VIP 同樂會',s1t:'與創作者同台的限定體驗',s1s:'每月限定，僅 VIP 可入場',vo:'VIP 專屬',
   pf1t:'創作者互動',pf1d:'直接與人氣主播面對面',pf2t:'搶先體驗',pf2d:'新功能優先開放 VIP',
   pf3t:'排行競賽',pf3d:'VIP 專屬排行獎勵',pf4t:'限定禮物',pf4d:'活動專屬特效禮物',
   s2e:'02 · 訂製禮物',s2t:'等級越高，動畫越璀璨',s2s:'Lv.1 起即可解鎖，隨等級持續升華',
   s3e:'03 · 禮包折扣',s3t:'每次購買，永遠更划算',
-  dclbl:'鑽石禮包專屬折扣',dcdet:'升級後永久有效，適用所有禮包方案',
-  dco:'NT$3,000',dcn:'NT$2,790',dcs:'省 NT$210',
+  disc_off:'OFF',disc_title:'鑽石禮包 VIP 專屬折扣',disc_body:'成為 VIP Lv.1 後永久享有，適用所有鑽石禮包方案',
+  disc_diamond:'鑽石',disc_pack_name:'限定 VIP 禮包',disc_save:'省 NT$68',
   s4e:'04 · 直播徽章',s4t:'讓所有人知道你是誰',
   bdn:'VIP 用戶',bds:'直播間顯示效果',
   bf1:'名稱旁顯示專屬徽章',bf2:'等級越高徽章越稀有',bf3:'創作者第一眼就認出你',
   bct:'準備好成為 VIP 了嗎？',bcs:'只需 <strong>500 鑽石</strong>，四項頂級禮遇立即解鎖',
   st0:'目前尚未成為 VIP',stv:'你目前是',lng:'zt'},
 'zh-CN':{tag:'SWAG VIP · 限定',hl:'只需一个礼包<br>解锁四项顶级礼遇',sub:'送出第一个礼包的瞬间，你的身份就此不同',
-  pl:'升级门槛',pu:'钻石',rl:'购买任一礼包，立即成为',rs:'升级立即生效 · 身份永久保留',
-  aw:'即可享有以下四项礼遇',
+  pl:'升级门槛',pu:'钻石',rl:'购买任一礼包，立即成为',aw:'即可享有以下四项礼遇',
   b1t:'VIP 同乐会',b1d:'每月限定聚会，与人气创作者同台互动',
-  b2t:'VIP 定制礼物动画',b2d:'等级越高，动画越璀璨，让全场都看见你',
-  b3t:'礼包 7% 专属折扣',b3d:'每次购买钻石礼包，永久享有折扣优惠',
-  b4t:'专属直播徽章',b4d:'直播间彰显 VIP 身份，让创作者认识你',
+  b2t:'VIP 定制礼物',b3t:'礼包 7% 折扣',b4t:'专属直播徽章',
   cta:'立即升级 VIP',ctan:'购买任一钻石礼包即可升级 · 立即生效',
   s1e:'01 · VIP 同乐会',s1t:'与创作者同台的限定体验',s1s:'每月限定，仅 VIP 可入场',vo:'VIP 专属',
   pf1t:'创作者互动',pf1d:'直接与人气主播面对面',pf2t:'抢先体验',pf2d:'新功能优先开放 VIP',
   pf3t:'排行竞赛',pf3d:'VIP 专属排行奖励',pf4t:'限定礼物',pf4d:'活动专属特效礼物',
   s2e:'02 · 定制礼物',s2t:'等级越高，动画越璀璨',s2s:'Lv.1 起即可解锁，随等级持续升华',
   s3e:'03 · 礼包折扣',s3t:'每次购买，永远更划算',
-  dclbl:'钻石礼包专属折扣',dcdet:'升级后永久有效，适用所有礼包方案',
-  dco:'NT$3,000',dcn:'NT$2,790',dcs:'省 NT$210',
+  disc_off:'OFF',disc_title:'钻石礼包 VIP 专属折扣',disc_body:'成为 VIP Lv.1 后永久享有，适用所有钻石礼包方案',
+  disc_diamond:'钻石',disc_pack_name:'限定 VIP 礼包',disc_save:'省 NT$68',
   s4e:'04 · 直播徽章',s4t:'让所有人知道你是谁',
   bdn:'VIP 用户',bds:'直播间显示效果',
   bf1:'名称旁显示专属徽章',bf2:'等级越高徽章越稀有',bf3:'创作者第一眼就认出你',
   bct:'准备好成为 VIP 了吗？',bcs:'只需 <strong>500 钻石</strong>，四项顶级礼遇立即解锁',
   st0:'目前尚未成为 VIP',stv:'你目前是',lng:'zc'},
 'en':{tag:'SWAG VIP · Exclusive',hl:'One pack.<br>Four elite perks, unlocked.',sub:'The moment you send your first gift, your identity changes.',
-  pl:'Entry Threshold',pu:'Diamonds',rl:'Any diamond pack · Instantly become',rs:'Activates immediately · Status is permanent',
-  aw:'Unlock all four perks below',
+  pl:'Entry Threshold',pu:'Diamonds',rl:'Any diamond pack · Instantly become',aw:'Unlock all four perks below',
   b1t:'VIP Party',b1d:'Monthly VIP-only events with top creators',
-  b2t:'Custom Gift Animations',b2d:'Higher level = more dazzling effects',
-  b3t:'7% Pack Discount',b3d:'Permanent discount on every diamond pack',
-  b4t:'Exclusive Live Badge',b4d:'Stand out in streams, get recognized instantly',
+  b2t:'Custom Gifts',b3t:'7% Discount',b4t:'Live Badge',
   cta:'Upgrade to VIP',ctan:'Any diamond pack purchase activates VIP instantly',
   s1e:'01 · VIP Party',s1t:'Exclusive access to creator events',s1s:'Monthly · VIP members only',vo:'VIP Only',
   pf1t:'Creator Interaction',pf1d:'Face-to-face with popular streamers',pf2t:'Early Access',pf2d:'New features for VIP first',
   pf3t:'VIP Rankings',pf3d:'VIP-exclusive leaderboard rewards',pf4t:'Exclusive Gifts',pf4d:'Event-only special effect gifts',
   s2e:'02 · Custom Gifts',s2t:'Higher level, more dazzling animation',s2s:'Unlocks from Lv.1, evolves with your level',
   s3e:'03 · Pack Discount',s3t:'Every purchase, always better value',
-  dclbl:'Diamond Pack Exclusive Discount',dcdet:'Permanent after upgrade · All pack sizes',
-  dco:'$100',dcn:'$93',dcs:'Save $7',
+  disc_off:'OFF',disc_title:'Diamond Pack VIP Exclusive Discount',disc_body:'Permanent from VIP Lv.1 · Applies to all diamond pack tiers',
+  disc_diamond:'Diamonds',disc_pack_name:'VIP Diamond Pack',disc_save:'Save NT$68',
   s4e:'04 · Live Badge',s4t:'Let everyone know who you are',
   bdn:'VIP User',bds:'Live stream display preview',
   bf1:'Badge shown next to your name',bf2:'Higher level = rarer badge',bf3:'Creators recognize you instantly',
   bct:'Ready to become VIP?',bcs:'Just <strong>500 diamonds</strong> — all four perks unlocked instantly',
   st0:'Not a VIP yet',stv:'You are currently',lng:'en'},
 'ja':{tag:'SWAG VIP · 限定',hl:'1つのパックで<br>4つの特典を解放',sub:'最初のギフトを送った瞬間、あなたの身分が変わる',
-  pl:'アップグレード条件',pu:'ダイヤ',rl:'ダイヤパック購入 · 即時',rs:'即時有効化 · 身分は永続',
-  aw:'以下4つの特典を全て解放',
+  pl:'アップグレード条件',pu:'ダイヤ',rl:'ダイヤパック購入 · 即時',aw:'以下4つの特典を全て解放',
   b1t:'VIPパーティー',b1d:'毎月限定VIPイベント、人気クリエイターと同台',
-  b2t:'カスタムギフトアニメ',b2d:'レベルが高いほど豪華なエフェクト',
-  b3t:'パック7%割引',b3d:'毎回のダイヤパック購入に永続割引',
-  b4t:'限定ライブバッジ',b4d:'配信でVIP身分を示し、認識される',
+  b2t:'カスタムギフト',b3t:'7%割引',b4t:'ライブバッジ',
   cta:'VIPにアップグレード',ctan:'ダイヤパック購入で即アップグレード',
   s1e:'01 · VIPパーティー',s1t:'クリエイターと同台する限定体験',s1s:'毎月開催 · VIP会員のみ',vo:'VIP限定',
   pf1t:'クリエイター交流',pf1d:'人気配信者と直接対面',pf2t:'先行体験',pf2d:'新機能はVIPに優先解放',
   pf3t:'VIPランキング',pf3d:'VIP限定ランキング報酬',pf4t:'限定ギフト',pf4d:'イベント限定特効ギフト',
   s2e:'02 · カスタムギフト',s2t:'レベルが高いほど豪華なアニメ',s2s:'Lv.1から解放、レベルで進化',
   s3e:'03 · パック割引',s3t:'毎回の購入が、もっとお得に',
-  dclbl:'ダイヤパック限定割引',dcdet:'アップグレード後永続 · 全パック対象',
-  dco:'¥3,000',dcn:'¥2,790',dcs:'¥210お得',
+  disc_off:'OFF',disc_title:'ダイヤパック VIP限定割引',disc_body:'VIP Lv.1から永続、全パック対象',
+  disc_diamond:'ダイヤ',disc_pack_name:'限定VIPパック',disc_save:'¥347 お得',
   s4e:'04 · ライブバッジ',s4t:'あなたが誰かを、全員に知らせる',
   bdn:'VIPユーザー',bds:'ライブ表示プレビュー',
   bf1:'名前の隣にバッジ表示',bf2:'レベルが高いほどレア',bf3:'クリエイターが瞬時に認識',
@@ -434,19 +502,32 @@ function R(){
   const lk=d.lng;document.querySelectorAll('.gi-name').forEach(el=>{el.textContent=el.dataset[lk]||el.dataset.zt;});
 }
 function goTo(id){const el=document.getElementById(id);if(!el)return;window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-12,behavior:'smooth'});}
-const car=document.getElementById('gcarousel');const dots=document.querySelectorAll('.gift-dot');const ITEM_W=120;
+// Carousel
+const car=document.getElementById('gcarousel');const dots=document.querySelectorAll('.gift-dot');const ITEM_W=128;let autoTimer=null;
 function updateDots(){const idx=Math.round(car.scrollLeft/ITEM_W);dots.forEach((d,i)=>d.classList.toggle('on',i===idx));}
 car.addEventListener('scroll',updateDots,{passive:true});
-dots.forEach(d=>d.addEventListener('click',()=>{car.scrollTo({left:parseInt(d.dataset.idx)*ITEM_W,behavior:'smooth'})}));
+dots.forEach(d=>d.addEventListener('click',()=>{clearInterval(autoTimer);car.scrollTo({left:parseInt(d.dataset.idx)*ITEM_W,behavior:'smooth'});startAuto();}));
+function startAuto(){autoTimer=setInterval(()=>{const cur=Math.round(car.scrollLeft/ITEM_W);const next=(cur+1)%11;car.scrollTo({left:next*ITEM_W,behavior:'smooth'});},2500);}
+startAuto();
+car.addEventListener('mouseenter',()=>clearInterval(autoTimer));
+car.addEventListener('mouseleave',()=>{clearInterval(autoTimer);startAuto();});
 let isDown=false,startX=0,scrollStart=0;
-car.addEventListener('mousedown',e=>{isDown=true;car.classList.add('dragging');startX=e.pageX;scrollStart=car.scrollLeft});
-car.addEventListener('mouseleave',()=>{isDown=false;car.classList.remove('dragging')});
-car.addEventListener('mouseup',()=>{isDown=false;car.classList.remove('dragging')});
+car.addEventListener('mousedown',e=>{isDown=true;clearInterval(autoTimer);car.classList.add('dragging');startX=e.pageX;scrollStart=car.scrollLeft});
+car.addEventListener('mouseleave',()=>{if(isDown){isDown=false;car.classList.remove('dragging');startAuto();}});
+car.addEventListener('mouseup',()=>{if(isDown){isDown=false;car.classList.remove('dragging');startAuto();}});
 car.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();car.scrollLeft=scrollStart-(e.pageX-startX)});
+// IFRAME
 let tok=null,rt=null;
 function sr(){window.parent.postMessage({type:'IFRAME_READY'},'*')}
-document.addEventListener('DOMContentLoaded',()=>{setTimeout(sr,100);rt=setInterval(()=>{if(!tok)sr()},3000)});
-window.addEventListener('message',ev=>{const{type,apiUrlPrefix,token:t}=ev.data||{};if(type==='SET_DOMAIN_CONFIG'&&apiUrlPrefix)window.apiBase=apiUrlPrefix;if(type==='SET_TOKEN'&&t&&t!==tok){tok=t;clearInterval(rt);fm(t)}});
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(sr,100);rt=setInterval(()=>{if(!tok)sr()},3000);
+  const v=document.getElementById('party-video');if(v){v.play().catch(()=>{})}
+});
+window.addEventListener('message',ev=>{
+  const{type,apiUrlPrefix,token:t}=ev.data||{};
+  if(type==='SET_DOMAIN_CONFIG'&&apiUrlPrefix)window.apiBase=apiUrlPrefix;
+  if(type==='SET_TOKEN'&&t&&t!==tok){tok=t;clearInterval(rt);fm(t)}
+});
 if(window.self===window.top){document.getElementById('dev-banner').style.display='block';document.body.style.paddingTop='36px';setTimeout(()=>ss({level_info:{level:0},displayName:'訪客',username:'guest'}),600);}
 async function fm(t){try{const r=await fetch(`${window.apiBase||''}/me`,{headers:{Authorization:`Bearer ${t}`}});if(!r.ok)throw new Error();ss(await r.json());}catch{document.getElementById('st-skel').style.display='none'}}
 function ss(data){const lv=data?.level_info?.level??0;const nm=data?.displayName||data?.username||'';document.getElementById('st-skel').style.display='none';document.getElementById('st-bar').classList.add('on');document.getElementById('st-nm').textContent=nm;const bd=document.getElementById('st-bd');bd.textContent=lv>0?`VIP Lv.${lv}`:'Lv.0';if(lv>0){bd.style.background='linear-gradient(135deg,var(--p),#009A8E)';bd.style.color='#000'}else{bd.style.background='#2a2a2a';bd.style.color='var(--t3)'}}
